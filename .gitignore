@@ -17,9 +17,6 @@ yarn-error.log*
 .logs_db.txt
 .logs_db.*.txt
 capturas/
-*.png
-*.jpg
-*.jpeg
 *.screenshot
 
 # Archivos del sistema
