@@ -1,5 +1,7 @@
 # Ghost-Key 👻
 
+<img src="src/Logo.png" alt="Ghost-Key Logo" width="300">
+
 Un servidor educativo de demostración sobre técnicas de captura de datos y análisis de ciberseguridad. Este proyecto forma parte de estudios académicos en Ciberseguridad.
 
 ## ⚠️ Disclaimer Importante
