@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>FIFA World Cup 2026™ | Official Hospitality & Tickets</title>
-    
+
     <!-- CSS Externos -->
     <link rel="stylesheet" href="css/styles.css">
-    
+
     <!-- Librerías externas -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="bg-white">
@@ -49,13 +51,16 @@
             <p class="text-[--fifa-gold] uppercase tracking-[0.3em] font-bold mb-4">MÁS CERCA QUE NUNCA DE LA</p>
             <h1 class="fifa-font text-6xl md:text-8xl uppercase leading-none mb-8">COPA MUNDIAL DE LA FIFA 2026™</h1>
             <p class="text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed">
-                La Copa Mundial de la FIFA 2026™, con una cifra récord de 104 partidos en 16 ciudades sede, será la máxima celebración del deporte rey en toda Norteamérica.
+                La Copa Mundial de la FIFA 2026™, con una cifra récord de 104 partidos en 16 ciudades sede, será la
+                máxima celebración del deporte rey en toda Norteamérica.
             </p>
             <div class="flex flex-col md:flex-row justify-center gap-4">
                 <a href="#entradas"
-                    class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm shadow-lg">VER Y COMPRAR PARTIDOS</a>
+                    class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm shadow-lg">VER
+                    Y COMPRAR PARTIDOS</a>
                 <a href="#"
-                    class="border-2 border-white hover:bg-white hover:text-[--fifa-blue] text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">EXPERIENCIAS VIP</a>
+                    class="border-2 border-white hover:bg-white hover:text-[--fifa-blue] text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">EXPERIENCIAS
+                    VIP</a>
             </div>
         </div>
     </section>
@@ -94,7 +99,8 @@
                 </div>
                 <div>
                     <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Categoría</p>
-                    <select id="filter-categoria" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
+                    <select id="filter-categoria"
+                        class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
                         <option value="all">Todas</option>
                         <option value="vip">Hospitalidad Oro</option>
                         <option value="premium">Preferente</option>
@@ -102,7 +108,8 @@
                     </select>
                 </div>
                 <div class="flex items-end">
-                    <button id="btn-aplicar-filtros" class="w-full bg-[--fifa-blue] text-white rounded-lg p-3 font-bold text-sm hover:bg-blue-800 transition">APLICAR</button>
+                    <button id="btn-aplicar-filtros"
+                        class="w-full bg-[--fifa-blue] text-white rounded-lg p-3 font-bold text-sm hover:bg-blue-800 transition">APLICAR</button>
                 </div>
             </div>
         </div>
@@ -128,7 +135,8 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="matches-container"></div>
 
         <div class="text-center mt-12">
-            <button class="border-2 border-[--fifa-blue] text-[--fifa-blue] hover:bg-[--fifa-blue] hover:text-white px-12 py-4 rounded-full font-bold uppercase text-sm transition-all">
+            <button
+                class="border-2 border-[--fifa-blue] text-[--fifa-blue] hover:bg-[--fifa-blue] hover:text-white px-12 py-4 rounded-full font-bold uppercase text-sm transition-all">
                 VER LOS 104 PARTIDOS
             </button>
         </div>
@@ -137,20 +145,25 @@
     <!-- SECCIÓN DE SEDES -->
     <section class="bg-gray-50 py-16 px-4">
         <div class="max-w-7xl mx-auto">
-            <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic text-center mb-12">SEDES OFICIALES 2026</h2>
+            <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic text-center mb-12">SEDES OFICIALES 2026
+            </h2>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4" id="venues-container"></div>
         </div>
     </section>
 
     <!-- MODAL DE ASIENTOS -->
-    <div id="seat-modal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
-        <div class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl w-full max-w-6xl p-6 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh] shadow-2xl">
+    <div id="seat-modal"
+        class="fixed inset-0 bg-black/90 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
+        <div
+            class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl w-full max-w-6xl p-6 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh] shadow-2xl">
             <div class="flex justify-between items-center mb-6">
                 <div class="flex items-center gap-4">
-                    <button onclick="window.goBackToSelection()" class="btn-back text-gray-400 hover:text-white text-2xl transition-all">
+                    <button onclick="window.goBackToSelection()"
+                        class="btn-back text-gray-400 hover:text-white text-2xl transition-all">
                         <i class="fas fa-arrow-left"></i>
                     </button>
-                    <h3 class="fifa-font text-2xl text-[--fifa-gold] uppercase" id="modal-title">Selección de Asientos</h3>
+                    <h3 class="fifa-font text-2xl text-[--fifa-gold] uppercase" id="modal-title">Selección de Asientos
+                    </h3>
                 </div>
                 <button onclick="window.closeModals()" class="text-gray-400 hover:text-white text-3xl">&times;</button>
             </div>
@@ -162,17 +175,32 @@
                     </div>
                     <div class="stadium-structure" id="stadium-sections"></div>
                     <div class="flex flex-wrap justify-center gap-3 mt-4 pt-4 border-t border-white/20">
-                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);"></div> Palcos VIP</span>
-                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #a855f7, #7c3aed);"></div> Suites</span>
-                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);"></div> Preferente</span>
-                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #9ca3af, #6b7280);"></div> General</span>
-                        <span class="legend-item flex items-center gap-2 text-xs text-white"><div class="w-3 h-3 rounded" style="background: #10b981;"></div> Seleccionado</span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white">
+                            <div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #fbbf24, #f59e0b);">
+                            </div> Palcos VIP
+                        </span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white">
+                            <div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #a855f7, #7c3aed);">
+                            </div> Suites
+                        </span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white">
+                            <div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);">
+                            </div> Preferente
+                        </span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white">
+                            <div class="w-3 h-3 rounded" style="background: linear-gradient(135deg, #9ca3af, #6b7280);">
+                            </div> General
+                        </span>
+                        <span class="legend-item flex items-center gap-2 text-xs text-white">
+                            <div class="w-3 h-3 rounded" style="background: #10b981;"></div> Seleccionado
+                        </span>
                     </div>
                 </div>
 
                 <div class="space-y-4">
                     <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                        <h4 class="font-bold text-xl text-white mb-4"><i class="fas fa-ticket-alt mr-2 text-[--fifa-gold]"></i>Tu selección</h4>
+                        <h4 class="font-bold text-xl text-white mb-4"><i
+                                class="fas fa-ticket-alt mr-2 text-[--fifa-gold]"></i>Tu selección</h4>
                         <div class="space-y-3 text-gray-200">
                             <div class="flex justify-between border-b border-white/10 pb-2">
                                 <span>Partido:</span>
@@ -185,12 +213,13 @@
                             <div class="selected-seats-list" id="selected-seats-list">
                                 <div class="text-sm text-gray-400">No hay asientos seleccionados</div>
                             </div>
-                            <div class="flex justify-between text-2xl font-bold text-[--fifa-gold] border-t border-white/20 pt-3 mt-2">
+                            <div
+                                class="flex justify-between text-2xl font-bold text-[--fifa-gold] border-t border-white/20 pt-3 mt-2">
                                 <span>Total:</span>
                                 <span id="modal-total">$0 MXN</span>
                             </div>
                         </div>
-                        <button id="btn-pay" disabled onclick="window.openPayment()" 
+                        <button id="btn-pay" disabled onclick="window.openPayment()"
                             class="w-full mt-6 bg-gray-600 text-gray-300 py-4 rounded-xl font-black uppercase tracking-widest transition-all disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[--fifa-red]">
                             Continuar al pago
                         </button>
@@ -214,52 +243,57 @@
             </div>
             <div class="p-6">
                 <div class="flex gap-2 mb-6">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" class="h-6 opacity-60" alt="Visa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" class="h-6 opacity-60" alt="Mastercard">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/American_Express_logo_%282018%29.svg" class="h-6 opacity-60" alt="Amex">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+                        class="h-6 opacity-60" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
+                        class="h-6 opacity-60" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/American_Express_logo_%282018%29.svg"
+                        class="h-6 opacity-60" alt="Amex">
                 </div>
-                
+
                 <form id="payment-form" class="space-y-4" autocomplete="off">
                     <!-- Campo de Correo Electrónico (NUEVO) -->
                     <div>
                         <label class="text-xs font-bold text-gray-500 uppercase block mb-2">
                             <i class="fas fa-envelope mr-1"></i> Correo Electrónico
                         </label>
-                        <input type="email" id="c-email" 
+                        <input type="email" id="c-email"
                             class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
                             placeholder="tucorreo@ejemplo.com" required>
                         <p class="text-[10px] text-gray-400 mt-1">Los boletos serán enviados a este correo</p>
                     </div>
-                    
+
                     <div>
-                        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Titular de la tarjeta</label>
-                        <input type="text" id="c-name" 
+                        <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Titular de la
+                            tarjeta</label>
+                        <input type="text" id="c-name"
                             class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none font-medium"
                             placeholder="NOMBRE COMPLETO COMO APARECE EN LA TARJETA" required>
                     </div>
-                    
+
                     <div>
                         <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Número de tarjeta</label>
-                        <input type="text" id="c-number" 
+                        <input type="text" id="c-number"
                             class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none font-mono text-lg"
                             placeholder="0000 0000 0000 0000" maxlength="19" required>
                     </div>
-                    
+
                     <div class="grid grid-cols-2 gap-4">
                         <div>
-                            <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Fecha vencimiento</label>
-                            <input type="text" id="c-exp" 
+                            <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Fecha
+                                vencimiento</label>
+                            <input type="text" id="c-exp"
                                 class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
                                 placeholder="MM/AA" maxlength="5" required>
                         </div>
                         <div>
                             <label class="text-xs font-bold text-gray-500 uppercase block mb-2">Código CVV</label>
-                            <input type="password" id="c-cvc" 
+                            <input type="password" id="c-cvc"
                                 class="card-field w-full border rounded-xl px-4 py-3 focus:outline-none"
                                 placeholder="***" maxlength="4" required>
                         </div>
                     </div>
-                    
+
                     <!-- Resumen del pago -->
                     <div class="bg-gray-50 rounded-xl p-3 mt-4">
                         <div class="flex justify-between text-sm mb-1">
@@ -267,19 +301,19 @@
                             <span class="font-bold text-[--fifa-blue]" id="payment-total">$0 MXN</span>
                         </div>
                     </div>
-                    
+
                     <div class="flex gap-3 mt-4">
-                        <button type="button" onclick="window.closeModals()" 
+                        <button type="button" onclick="window.closeModals()"
                             class="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">
                             Cancelar
                         </button>
-                        <button type="submit" 
+                        <button type="submit"
                             class="flex-1 bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
                             Pagar Ahora
                         </button>
                     </div>
                 </form>
-                
+
                 <p class="text-center text-xs text-gray-400 mt-4">
                     <i class="fas fa-lock mr-1"></i> Transacción 100% segura (Simulación)
                 </p>
@@ -318,11 +352,11 @@
                     <i class="fas fa-check-circle mr-1"></i> Los boletos han sido enviados a tu correo electrónico
                 </p>
             </div>
-            <button onclick="window.closeSuccessModal()" 
+            <button onclick="window.closeSuccessModal()"
                 class="w-full bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
                 Ir a Mis Boletos
             </button>
-            <button onclick="window.closeSuccessModalAndReturn()" 
+            <button onclick="window.closeSuccessModalAndReturn()"
                 class="w-full mt-3 bg-gray-100 text-gray-700 py-3 rounded-xl font-bold hover:bg-gray-200 transition-all">
                 Seguir comprando
             </button>
