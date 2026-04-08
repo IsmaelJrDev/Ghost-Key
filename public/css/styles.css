@@ -22,20 +22,20 @@ body {
 }
 
 .hero-bg {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('/src/portada.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/src/portada.png');
     background-size: cover;
     background-position: center;
 }
 
 .stadium-gradient {
-    background: linear-gradient(180deg, rgba(11,27,61,0) 0%, rgba(11,27,61,0.9) 100%);
+    background: linear-gradient(180deg, rgba(11, 27, 61, 0) 0%, rgba(11, 27, 61, 0.9) 100%);
 }
 
 .stadium-side-view {
     background: linear-gradient(145deg, #1e293b, #0f172a);
     border-radius: 24px;
     padding: 20px;
-    box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -46,21 +46,35 @@ body {
 }
 
 .pitch-horizontal {
-    background: linear-gradient(145deg, #1a472a, #0f3b2c);
+    background: linear-gradient(135deg, rgba(88, 198, 255, 0.1), rgba(11, 27, 61, 0.2));
     border-radius: 12px;
-    height: 100px;
-    margin-bottom: 20px;
+    width: 100%;
+    max-width: 600px;
+    min-height: 300px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    position: relative;
+    border: 3px solid rgba(206, 171, 93, 0.8);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(206, 171, 93, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    border: 2px solid rgba(206, 171, 93, 0.3);
+    overflow: hidden;
 }
 
+.stadium-pitch-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 9px;
+    max-height: 600px;
+}
+
+
 .pitch-horizontal::before {
-    content: "⚽";
-    font-size: 48px;
-    opacity: 0.4;
+    content: "";
+    display: none;
 }
 
 .section-tier {
@@ -86,16 +100,27 @@ body {
     cursor: pointer;
 }
 
-.tier-bar.vip { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
-.tier-bar.premium { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
-.tier-bar.general { background: linear-gradient(90deg, #9ca3af, #6b7280); }
-.tier-bar.suite { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+.tier-bar.vip {
+    background: linear-gradient(90deg, #fbbf24, #f59e0b);
+}
+
+.tier-bar.premium {
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+}
+
+.tier-bar.general {
+    background: linear-gradient(90deg, #9ca3af, #6b7280);
+}
+
+.tier-bar.suite {
+    background: linear-gradient(90deg, #a855f7, #7c3aed);
+}
 
 .tier-details {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .section-tier.expanded .tier-details {
@@ -113,7 +138,7 @@ body {
 .mini-seat {
     width: 100%;
     aspect-ratio: 1;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s;
@@ -126,7 +151,7 @@ body {
 }
 
 .mini-seat.available:hover {
-    background: rgba(255,255,255,0.4);
+    background: rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
 }
 
@@ -157,7 +182,7 @@ body {
 .payment-card {
     background: white;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     overflow: hidden;
 }
 
@@ -197,7 +222,7 @@ body {
 }
 
 .selected-seats-list::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
 
@@ -220,6 +245,7 @@ body {
     width: 80px;
     height: 80px;
     background: linear-gradient(135deg, #10b981, #059669);
+    background: url(/src/icon.jpg);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -229,13 +255,27 @@ body {
 }
 
 @keyframes scaleIn {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 @keyframes slideInUp {
-    from { transform: translateY(50px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .animate-slide-up {
@@ -253,8 +293,15 @@ body {
 }
 
 @keyframes fall {
-    0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 .loader {
@@ -268,8 +315,13 @@ body {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .match-card {
