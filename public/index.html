@@ -25,7 +25,7 @@
     <nav class="bg-[--fifa-blue] border-b border-gray-200 px-4 py-3 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-8">
-                <img src="/src/icon.jpeg" class="h-8 invert" alt="FIFA">
+                <img src="../src/icon.jpg" class="h-8 invert" alt="FIFA">
                 <div class="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-white">
                     <a href="#" class="hover:text-[--fifa-gold]">Partidos individuales</a>
                     <a href="#" class="hover:text-[--fifa-gold]">Ofertas de Partidos</a>
@@ -170,8 +170,9 @@
 
             <div class="grid lg:grid-cols-2 gap-8">
                 <div class="stadium-side-view">
-                    <div class="pitch-horizontal">
-                        <span class="text-white text-xs opacity-70 absolute bottom-2 left-2">CAMPO DE JUEGO</span>
+                    <div class="pitch-horizontal" id="pitch-horizontal">
+                        <img id="stadium-img" src="" alt="Estadio" class="stadium-pitch-image">
+                        <span class="text-white text-xs opacity-70 absolute bottom-2 left-2 z-10">CAMPO DE JUEGO</span>
                     </div>
                     <div class="stadium-structure" id="stadium-sections"></div>
                     <div class="flex flex-wrap justify-center gap-3 mt-4 pt-4 border-t border-white/20">
