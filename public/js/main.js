@@ -203,7 +203,7 @@ function renderMatches(filteredMatches) {
                     <span class="text-2xl font-black text-[--fifa-blue]">$${match.precio.toLocaleString('es-MX')} <span class="text-[8px]">MXN</span></span>
                     <span class="bg-green-100 text-green-700 text-[8px] font-bold px-2 py-1 rounded-full">DISPONIBLE</span>
                 </div>
-                <button onclick="window.openSeatMap('${match.local} vs ${match.visitante}', ${match.precio})"
+                <button onclick="window.openSeatMap(${match.id}, '${match.local} vs ${match.visitante}', ${match.precio})"
                     class="w-full bg-[--fifa-blue] hover:bg-blue-900 text-white py-3 rounded-xl font-bold uppercase tracking-widest text-xs transition-all">SELECCIONAR</button>
             </div>
         `;
@@ -535,7 +535,7 @@ window.closeSuccessModalAndReturn = function () {
     document.getElementById('entradas').scrollIntoView({ behavior: 'smooth' });
 };
 
-window.openSeatMap = function (match, price) {
+window.openSeatMap = function (matchId, match, price) {
     currentPrice = price;
     currentMatch = match;
     selectedSeats = [];
@@ -546,8 +546,49 @@ window.openSeatMap = function (match, price) {
     document.getElementById('modal-total').innerHTML = `$${price.toLocaleString('es-MX')} MXN`;
 
     renderStadiumSections();
+    loadStadiumImage(matchId);
     updateSeatSummary();
     document.getElementById('seat-modal').classList.remove('hidden');
+};
+
+window.loadStadiumImage = function (matchId) {
+    const stadiumImg = document.getElementById('stadium-img');
+    const pitch = document.getElementById('pitch-horizontal');
+    if (stadiumImg) {
+        // Buscar el partido para obtener la imagen correcta
+        const match = matches.find(m => m.id === matchId);
+        if (match && match.imagen) {
+            // Convertir la ruta de imagen a imagen de asientos
+            // Ej: /src/azteca.jpg -> /src/azteca-asientos.jpg
+            const seatsImage = match.imagen.replace('.jpg', '-asientos.jpg');
+            stadiumImg.src = seatsImage;
+        } else {
+            // Fallback por defecto
+            stadiumImg.src = '/src/azteca-asientos.jpg';
+        }
+        stadiumImg.alt = 'Estadio - Distribución de Asientos';
+
+        // Ajustar las dimensiones del contenedor cuando la imagen se cargue
+        stadiumImg.onload = function () {
+            if (pitch) {
+                const imgWidth = this.naturalWidth || this.width;
+                const imgHeight = this.naturalHeight || this.height;
+                const aspectRatio = imgWidth / imgHeight;
+
+                // Ajustar el ancho máximo según la proporción de la imagen
+                if (aspectRatio > 1) {
+                    // Imagen más ancha que alta
+                    pitch.style.maxWidth = '600px';
+                } else {
+                    // Imagen más alta que ancha
+                    pitch.style.maxWidth = '450px';
+                }
+
+                // Asegurar una altura mínima coherente
+                pitch.style.minHeight = '300px';
+            }
+        };
+    }
 };
 
 window.goBackToSelection = function () {
