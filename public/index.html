@@ -22,25 +22,29 @@
 <body class="bg-white">
 
     <!-- NAVEGACIÓN -->
-    <nav class="bg-[--fifa-blue] border-b border-gray-200 px-4 py-3 sticky top-0 z-50">
+    <nav class="bg-black border-b border-white/10 px-4 py-3 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center space-x-8">
+            <div class="flex items-center gap-8">
                 <img src="/src/icon.jpg" class="h-8 invert" alt="FIFA">
-                <div class="hidden lg:flex space-x-6 text-[11px] font-bold uppercase tracking-widest text-white">
-                    <a href="#" class="hover:text-[--fifa-gold]">Partidos individuales</a>
-                    <a href="#" class="hover:text-[--fifa-gold]">Ofertas de Partidos</a>
-                    <a href="#" class="hover:text-[--fifa-gold]">Paquetes</a>
-                    <a href="#" class="hover:text-[--fifa-gold]">Hospitalidad</a>
-                    <a href="#" class="hover:text-[--fifa-gold]">FAQ</a>
+                <div class="hidden lg:flex gap-6 text-[11px] font-bold uppercase tracking-widest text-white/70">
+                    <a href="#" class="hover:text-white transition">Partidos individuales</a>
+                    <a href="#" class="hover:text-white transition">Ofertas de Partidos</a>
+                    <a href="#" class="hover:text-white transition">Paquetes</a>
+                    <a href="#" class="hover:text-white transition">Hospitalidad</a>
+                    <a href="#" class="hover:text-white transition">FAQ</a>
                 </div>
             </div>
-            <div class="flex items-center space-x-4 text-white text-sm font-bold">
-                <div class="flex items-center space-x-1 cursor-pointer">
-                    <img src="https://flagcdn.com/w20/mx.png" class="h-3" alt="MX">
-                    <span>MEX</span>
+            <div class="flex items-center gap-5">
+                <div class="hidden md:flex items-center gap-4 text-white/50">
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fab fa-youtube"></i></a>
                 </div>
-                <div class="h-4 w-[1px] bg-gray-300"></div>
-                <button class="hover:text-[--fifa-gold]">Log In</button>
+                <div class="h-4 w-[1px] bg-white/20 hidden md:block"></div>
+                <div class="flex items-center gap-1 cursor-pointer text-white/70 hover:text-white transition">
+                    <img src="https://flagcdn.com/w20/mx.png" class="h-3 rounded-sm" alt="MX">
+                    <span class="text-xs font-bold">MEX</span>
+                </div>
             </div>
         </div>
     </nav>
@@ -59,7 +63,7 @@
                     class="bg-[--fifa-red] hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm shadow-lg">VER
                     Y COMPRAR PARTIDOS</a>
                 <a href="#"
-                    class="border-2 border-white hover:bg-white hover:text-[--fifa-blue] text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">EXPERIENCIAS
+                    class="border-2 border-white hover:bg-white hover:text-black text-white px-10 py-4 rounded-full font-bold transition-all uppercase text-sm">EXPERIENCIAS
                     VIP</a>
             </div>
         </div>
@@ -81,20 +85,29 @@
                 <div>
                     <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fase</p>
                     <select id="filter-fase" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
-                        <option value="all">Todos los partidos</option>
-                        <option value="grupos">Fase de Grupos</option>
-                        <option value="octavos">Octavos de Final</option>
-                        <option value="cuartos">Cuartos de Final</option>
-                        <option value="semifinal">Semifinales</option>
-                        <option value="final">Final</option>
+                        <option value="all">Todos los grupos</option>
+                        <option value="grupo A">Grupo A</option>
+                        <option value="grupo B">Grupo B</option>
+                        <option value="grupo C">Grupo C</option>
+                        <option value="grupo D">Grupo D</option>
+                        <option value="grupo E">Grupo E</option>
+                        <option value="grupo F">Grupo F</option>
+                        <option value="grupo G">Grupo G</option>
+                        <option value="grupo H">Grupo H</option>
+                        <option value="grupo I">Grupo I</option>
+                        <option value="grupo J">Grupo J</option>
+                        <option value="grupo K">Grupo K</option>
+                        <option value="grupo L">Grupo L</option>
                     </select>
                 </div>
                 <div>
                     <p class="text-[10px] font-bold uppercase text-gray-400 mb-1">Fecha</p>
                     <select id="filter-fecha" class="w-full border-none bg-gray-100 rounded-lg p-3 text-sm font-bold">
                         <option value="all">Cualquier fecha</option>
-                        <option value="junio">Junio 2026</option>
-                        <option value="julio">Julio 2026</option>
+                        <option value="11-14">11 – 14 Jun</option>
+                        <option value="15-18">15 – 18 Jun</option>
+                        <option value="19-22">19 – 22 Jun</option>
+                        <option value="23-27">23 – 27 Jun</option>
                     </select>
                 </div>
                 <div>
@@ -107,9 +120,11 @@
                         <option value="general">General</option>
                     </select>
                 </div>
-                <div class="flex items-end">
+                <div class="flex items-end gap-2">
                     <button id="btn-aplicar-filtros"
-                        class="w-full bg-[--fifa-blue] text-white rounded-lg p-3 font-bold text-sm hover:bg-blue-800 transition">APLICAR</button>
+                        class="flex-1 bg-black text-white rounded-lg p-3 font-bold text-sm hover:bg-gray-800 transition">APLICAR</button>
+                    <button id="btn-limpiar-filtros"
+                        class="flex-1 bg-gray-200 text-gray-600 rounded-lg p-3 font-bold text-sm hover:bg-gray-300 transition">LIMPIAR</button>
                 </div>
             </div>
         </div>
@@ -119,7 +134,7 @@
     <section id="entradas" class="max-w-7xl mx-auto py-16 px-4">
         <div class="flex justify-between items-center mb-12">
             <div>
-                <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic">PARTIDOS DISPONIBLES</h2>
+                <h2 class="fifa-font text-4xl text-black uppercase italic">PARTIDOS DISPONIBLES</h2>
                 <p class="text-gray-500">104 partidos | 16 sedes | 3 países</p>
             </div>
             <div class="flex gap-2">
@@ -136,7 +151,7 @@
 
         <div class="text-center mt-12">
             <button
-                class="border-2 border-[--fifa-blue] text-[--fifa-blue] hover:bg-[--fifa-blue] hover:text-white px-12 py-4 rounded-full font-bold uppercase text-sm transition-all">
+                class="border-2 border-black text-black hover:bg-black hover:text-white px-12 py-4 rounded-full font-bold uppercase text-sm transition-all">
                 VER LOS 104 PARTIDOS
             </button>
         </div>
@@ -145,9 +160,9 @@
     <!-- SECCIÓN DE SEDES -->
     <section class="bg-gray-50 py-16 px-4">
         <div class="max-w-7xl mx-auto">
-            <h2 class="fifa-font text-4xl text-[--fifa-blue] uppercase italic text-center mb-12">SEDES OFICIALES 2026
+            <h2 class="fifa-font text-4xl text-black uppercase italic text-center mb-12">SEDES OFICIALES 2026
             </h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4" id="venues-container"></div>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="venues-container"></div>
         </div>
     </section>
 
@@ -155,7 +170,7 @@
     <div id="seat-modal"
         class="fixed inset-0 bg-black/90 backdrop-blur-md z-[60] hidden flex items-center justify-center p-4">
         <div
-            class="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl w-full max-w-6xl p-6 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh] shadow-2xl">
+            class="bg-gradient-to-br from-neutral-900 to-black rounded-3xl w-full max-w-6xl p-6 animate__animated animate__fadeInUp overflow-y-auto max-h-[90vh] shadow-2xl border border-white/10">
             <div class="flex justify-between items-center mb-6">
                 <div class="flex items-center gap-4">
                     <button onclick="window.goBackToSelection()"
@@ -172,7 +187,10 @@
                 <div class="stadium-side-view">
                     <div class="pitch-horizontal" id="pitch-horizontal">
                         <img id="stadium-img" src="" alt="Estadio" class="stadium-pitch-image">
-                        <span class="text-white text-xs opacity-70 absolute bottom-2 left-2 z-10">CAMPO DE JUEGO</span>
+                    </div>
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        <i class="fas fa-map-marker-alt text-[--fifa-gold] text-sm"></i>
+                        <span id="stadium-sede-label" class="text-white/80 text-sm font-bold uppercase tracking-wider">Estadio</span>
                     </div>
                     <div class="stadium-structure" id="stadium-sections"></div>
                     <div class="flex flex-wrap justify-center gap-3 mt-4 pt-4 border-t border-white/20">
@@ -243,13 +261,11 @@
                 </div>
             </div>
             <div class="p-6">
-                <div class="flex gap-2 mb-6">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
-                        class="h-6 opacity-60" alt="Visa">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                        class="h-6 opacity-60" alt="Mastercard">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/American_Express_logo_%282018%29.svg"
-                        class="h-6 opacity-60" alt="Amex">
+                <div class="flex gap-3 mb-6 items-center">
+                    <i class="fab fa-cc-visa text-3xl text-gray-400"></i>
+                    <i class="fab fa-cc-mastercard text-3xl text-gray-400"></i>
+                    <i class="fab fa-cc-amex text-3xl text-gray-400"></i>
+                    <i class="fab fa-cc-discover text-3xl text-gray-400"></i>
                 </div>
 
                 <form id="payment-form" class="space-y-4" autocomplete="off">
@@ -299,7 +315,7 @@
                     <div class="bg-gray-50 rounded-xl p-3 mt-4">
                         <div class="flex justify-between text-sm mb-1">
                             <span class="text-gray-600">Total a pagar:</span>
-                            <span class="font-bold text-[--fifa-blue]" id="payment-total">$0 MXN</span>
+                            <span class="font-bold text-black" id="payment-total">$0 MXN</span>
                         </div>
                     </div>
 
@@ -309,7 +325,7 @@
                             Cancelar
                         </button>
                         <button type="submit"
-                            class="flex-1 bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
+                            class="flex-1 bg-blue-600 text-white py-3 rounded-xl font-bold hover:bg-blue-700 transition-all">
                             Pagar Ahora
                         </button>
                     </div>
@@ -328,12 +344,12 @@
             <div class="success-icon">
                 <i class="fas fa-check text-white text-4xl"></i>
             </div>
-            <h3 class="text-2xl font-bold text-[--fifa-blue] mb-2">¡Compra Exitosa!</h3>
+            <h3 class="text-2xl font-bold text-black mb-2">¡Compra Exitosa!</h3>
             <p class="text-gray-600 mb-4" id="success-message">Tu reserva ha sido confirmada</p>
             <div class="bg-gray-50 rounded-xl p-4 mb-6 text-left">
                 <div class="flex justify-between text-sm mb-2">
                     <span class="text-gray-500">Número de orden:</span>
-                    <span class="font-bold text-[--fifa-blue]" id="order-number">FIFA-2026-XXXX</span>
+                    <span class="font-bold text-black" id="order-number">FIFA-2026-XXXX</span>
                 </div>
                 <div class="flex justify-between text-sm mb-2">
                     <span class="text-gray-500">Total pagado:</span>
@@ -341,7 +357,7 @@
                 </div>
                 <div class="flex justify-between text-sm mb-2">
                     <span class="text-gray-500">Correo de envío:</span>
-                    <span class="font-bold text-[--fifa-blue] text-xs break-all" id="sent-email">-</span>
+                    <span class="font-bold text-black text-xs break-all" id="sent-email">-</span>
                 </div>
                 <div class="flex justify-between text-sm">
                     <span class="text-gray-500">Método de pago:</span>
@@ -354,7 +370,7 @@
                 </p>
             </div>
             <button onclick="window.closeSuccessModal()"
-                class="w-full bg-[--fifa-blue] text-white py-3 rounded-xl font-bold hover:bg-blue-900 transition-all">
+                class="w-full bg-black text-white py-3 rounded-xl font-bold hover:bg-gray-800 transition-all">
                 Ir a Mis Boletos
             </button>
             <button onclick="window.closeSuccessModalAndReturn()"
@@ -363,6 +379,89 @@
             </button>
         </div>
     </div>
+
+    <!-- FOOTER FIFA -->
+    <footer class="bg-black text-white mt-16">
+        <!-- Barra superior: Logo + Redes + App -->
+        <div class="border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-6">
+                    <span class="text-2xl font-black tracking-wider">FIFA</span>
+                    <div class="flex items-center gap-4 text-white/70">
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-x-twitter text-lg"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook-f text-lg"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-instagram text-lg"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-youtube text-lg"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-tiktok text-lg"></i></a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <span class="text-xs text-white/60 hidden md:block">Descárgate ya la FIFA App para disfrutar de más contenidos</span>
+                    <a href="#" class="bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold px-3 py-2 rounded-md flex items-center gap-1 transition">
+                        <i class="fab fa-google-play text-sm"></i> Google Play
+                    </a>
+                    <a href="#" class="bg-white/10 hover:bg-white/20 text-white text-[10px] font-bold px-3 py-2 rounded-md flex items-center gap-1 transition">
+                        <i class="fab fa-apple text-sm"></i> App Store
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- FIFA Partners -->
+        <div class="border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 py-6">
+                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 text-center mb-5">FIFA Partners</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-4">
+                    <span class="text-white/70 hover:text-white transition text-sm font-light tracking-[0.2em] uppercase" style="font-family: 'Source Sans Pro', sans-serif;">aramco</span>
+                    <span class="text-white/70 hover:text-white transition text-lg font-black italic tracking-wide uppercase">adidas</span>
+                    <span class="text-white/70 hover:text-white transition text-lg italic" style="font-family: 'Georgia', serif; font-weight: bold;">Coca-Cola</span>
+                    <span class="text-white/70 hover:text-white transition text-sm font-bold tracking-wider uppercase" style="font-family: 'Source Sans Pro', sans-serif;">HYUNDAI</span>
+                    <span class="text-white/70 hover:text-white transition text-lg font-bold uppercase" style="font-family: 'Source Sans Pro', sans-serif;">KIA</span>
+                    <span class="text-white/70 hover:text-white transition text-sm font-bold tracking-wide uppercase" style="font-family: 'Source Sans Pro', sans-serif;">Lenovo</span>
+                    <span class="text-white/70 hover:text-white transition text-xs font-bold tracking-wider uppercase" style="font-family: 'Source Sans Pro', sans-serif;">QATAR AIRWAYS</span>
+                    <span class="text-white/70 hover:text-white transition text-xl font-black italic tracking-wide uppercase" style="font-family: 'Source Sans Pro', sans-serif;">VISA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sponsors -->
+        <div class="border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 py-5">
+                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 text-center mb-4">Sponsors</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
+                    <span class="text-white/60 hover:text-white transition text-xs font-bold tracking-wider uppercase">Michelob ULTRA</span>
+                    <span class="text-white/60 hover:text-white transition text-xs font-bold tracking-wider uppercase">Hisense</span>
+                    <span class="text-white/60 hover:text-white transition text-sm font-black tracking-wide" style="font-family: 'Source Sans Pro', sans-serif;">McDonald's</span>
+                    <span class="text-white/60 hover:text-white transition text-xs font-bold tracking-wider uppercase" style="font-family: 'Source Sans Pro', sans-serif;">蒙牛</span>
+                    <span class="text-white/60 hover:text-white transition text-xs font-light italic tracking-wider" style="font-family: 'Georgia', serif;">Dove</span>
+                    <span class="text-white/60 hover:text-white transition text-xs font-bold tracking-wider uppercase">verizon</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Supporters -->
+        <div class="border-b border-white/10">
+            <div class="max-w-7xl mx-auto px-4 py-5">
+                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-white/40 text-center mb-4">Supporters</p>
+                <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3">
+                    <span class="text-white/50 hover:text-white transition text-xs font-bold tracking-wider uppercase">DIAGEO</span>
+                    <span class="text-white/50 hover:text-white transition text-xs font-bold tracking-wider uppercase" style="font-family: 'Source Sans Pro', sans-serif;">Globant</span>
+                    <span class="text-white/50 hover:text-white transition text-xs font-light tracking-wider uppercase" style="font-family: 'Source Sans Pro', sans-serif;">MARRIOTT BONVOY</span>
+                    <span class="text-white/50 hover:text-white transition text-xs font-bold tracking-wider uppercase">SAÚDI</span>
+                    <span class="text-white/50 hover:text-white transition text-[10px] font-bold tracking-widest uppercase">CRYPTO.COM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra legal -->
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-white/50">
+                <a href="#" class="hover:text-white transition">Política de Privacidad</a>
+                <a href="#" class="hover:text-white transition">Términos de Servicio</a>
+            </div>
+            <p class="text-[10px] text-white/30">Copyright © 1994 – 2026 FIFA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <!-- JavaScript Principal -->
     <script type="module" src="js/main.js"></script>

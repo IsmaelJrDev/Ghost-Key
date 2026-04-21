@@ -108,7 +108,10 @@ export function renderStadiumSections() {
         div.innerHTML = `
             <div class="tier-bar ${sec.type}" onclick="window.toggleSection(this)">
                 <span><i class="fas ${sec.icon} mr-2"></i> ${sec.name}</span>
-                <span>${sec.items}</span>
+                <span class="flex items-center gap-2">
+                    <span class="text-xs opacity-80">${sec.items}</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform"></i>
+                </span>
             </div>
             <div class="tier-details">
                 ${sec.id === 'suites' ? '<div id="suites-list"></div>' : `<div class="seat-grid-mini" id="${sec.id}-seats"></div>`}
@@ -149,8 +152,17 @@ function renderSeatsInSection(containerId, sectionData, multiplier, type) {
     
     sectionData.forEach(rowData => {
         const rowDiv = document.createElement('div');
-        rowDiv.className = 'flex items-center gap-1 mb-2 flex-wrap';
-        rowDiv.innerHTML = `<span class="text-xs text-gray-400 w-6 font-bold">${rowData.row}</span>`;
+        rowDiv.className = 'seat-row';
+        
+        // Etiqueta de fila
+        const label = document.createElement('div');
+        label.className = 'seat-row-label';
+        label.textContent = rowData.row;
+        rowDiv.appendChild(label);
+        
+        // Contenedor de asientos
+        const seatsContainer = document.createElement('div');
+        seatsContainer.className = 'seat-row-seats';
         
         for(let i = 1; i <= rowData.seats; i++) {
             const seatPrice = Math.round(currentPrice * multiplier);
@@ -159,16 +171,45 @@ function renderSeatsInSection(containerId, sectionData, multiplier, type) {
             const seatBtn = document.createElement('div');
             seatBtn.className = `mini-seat available ${isSelected ? 'selected' : ''}`;
             seatBtn.textContent = i;
+            seatBtn.title = `Fila ${rowData.row} - Asiento ${i} | $${seatPrice.toLocaleString('es-MX')} MXN`;
             seatBtn.onclick = (function(sId, sPrice, sRow, sNum, sType) {
                 return function() { window.selectSeat(sId, sPrice, sRow, sNum, sType); };
             })(seatId, seatPrice, rowData.row, i, type);
-            rowDiv.appendChild(seatBtn);
+            seatsContainer.appendChild(seatBtn);
         }
+        rowDiv.appendChild(seatsContainer);
+        
+        // Precio de referencia
+        const priceLabel = document.createElement('div');
+        priceLabel.className = 'text-[10px] text-white/40 font-medium w-16 text-right flex-shrink-0';
+        priceLabel.textContent = `$${Math.round(currentPrice * multiplier).toLocaleString('es-MX')}`;
+        rowDiv.appendChild(priceLabel);
+        
         container.appendChild(rowDiv);
     });
 }
 
-window.openSeatMap = function(match, price) {
+// Mapeo de sede a imagen de asientos
+const stadiumSeatImages = {
+    'Estadio Banorte': '/src/azteca-asientos.jpg',
+    'Akron': '/src/akron-asientos.jpg',
+    'BBVA': '/src/bbva-asientos.jpg',
+    'BMO Field': '/src/bmo-asientos.jpg',
+    'BC Place Vancouver': '/src/bc-asientos.jpg',
+    'SoFi Stadium': '/src/sofi-asientos.jpg',
+    'MetLife Stadium': '/src/metlife-asientos.jpg',
+    'Gillette Stadium': '/src/gillette-asientos.jpg',
+    'AT&T Stadium': '/src/att-asientos.jpg',
+    'Hard Rock Stadium': '/src/hard-asientos.jpg',
+    'NRG Stadium': '/src/nrg-asientos.jpg',
+    'Lincoln Financial Field': '/src/lincoln-asientos.jpg',
+    'Levi\'s Stadium': '/src/levis-asientos.jpg',
+    'Lumen Field': '/src/lumen-asientos.jpg',
+    'Mercedes-Benz Stadium': '/src/mercedes-asientos.jpg',
+    'Arrowhead Stadium': '/src/arrowhead-asientos.jpg',
+};
+
+window.openSeatMap = function(match, price, sede) {
     currentPrice = price;
     currentMatch = match;
     selectedSeats = [];
@@ -177,6 +218,17 @@ window.openSeatMap = function(match, price) {
     document.getElementById('modal-match-name').innerText = match;
     document.getElementById('modal-price').innerHTML = `$${price.toLocaleString('es-MX')} MXN`;
     document.getElementById('modal-total').innerHTML = `$${price.toLocaleString('es-MX')} MXN`;
+    
+    // Cargar imagen de asientos del estadio correspondiente
+    const stadiumImg = document.getElementById('stadium-img');
+    const sedeLabel = document.getElementById('stadium-sede-label');
+    if (stadiumImg) {
+        stadiumImg.src = stadiumSeatImages[sede] || '/src/azteca-asientos.jpg';
+        stadiumImg.alt = sede || 'Estadio';
+    }
+    if (sedeLabel) {
+        sedeLabel.textContent = sede || 'Estadio';
+    }
     
     renderStadiumSections();
     updateSeatSummary();

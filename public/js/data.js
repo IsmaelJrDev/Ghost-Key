@@ -1,6 +1,6 @@
 // Datos de los partidos (20 partidos)
 export const matches = [
-    { id: 1, local: "México", visitante: "Sudáfrica", fecha: "11 JUN 2026", sede: "Estadio Azteca", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo A", precio: 2450, imagen: "/src/azteca.jpg", categoria: "vip", destacado: "GRUPO A" },
+    { id: 1, local: "México", visitante: "Sudáfrica", fecha: "11 JUN 2026", sede: "Estadio Banorte", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo A", precio: 2450, imagen: "/src/banorte.jpg.jpeg", categoria: "vip", destacado: "GRUPO A" },
     { id: 2, local: "Corea del Sur", visitante: "República Checa", fecha: "11 JUN 2026", sede: "Akron", ciudad: "Zapopan", pais: "mexico", fase: "grupo A", precio: 1890, imagen: "/src/akron.jpg", categoria: "premium", destacado: "GRUPO A" },
 
     { id: 3, local: "Canadá", visitante: "Bosnia-Herzegovina", fecha: "12 JUN 2026", sede: "BMO Field", ciudad: "Toronto", pais: "canada", fase: "grupo B", precio: 2750, imagen: "/src/bmo.jpg", categoria: "general", destacado: "GRUPO B" },
@@ -29,7 +29,7 @@ export const matches = [
     { id: 21, local: "Ghana", visitante: "Panamá", fecha: "17 JUN 2026", sede: "BMO Field", ciudad: "Toronto", pais: "canada", fase: "grupo L", precio: 2400, imagen: "/src/bmo.jpg", categoria: "general", destacado: "GRUPO L" },
     { id: 22, local: "Inglaterra", visitante: "Croacia", fecha: "17 JUN 2026", sede: "AT&T Stadium", ciudad: "Arlington", pais: "usa", fase: "grupo L", precio: 1550, imagen: "/src/att.jpg", categoria: "general", destacado: "GRUPO L" },
     { id: 23, local: "Portugal", visitante: "República Democrática del Congo", fecha: "17 JUN 2026", sede: "NRG Stadium", ciudad: "Houston", pais: "usa", fase: "grupo K", precio: 2850, imagen: "/src/nrg.jpg", categoria: "general", destacado: "GRUPO K" },
-    { id: 24, local: "Uzbekistán", visitante: "Colombia", fecha: "17 JUN 2026", sede: "Estadio Azteca", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo K", precio: 2150, imagen: "/src/azteca.jpg", categoria: "general", destacado: "GRUPO K" },
+    { id: 24, local: "Uzbekistán", visitante: "Colombia", fecha: "17 JUN 2026", sede: "Estadio Banorte", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo K", precio: 2150, imagen: "/src/banorte.jpg.jpeg", categoria: "general", destacado: "GRUPO K" },
 
     { id: 25, local: "República Checa", visitante: "Sudáfrica", fecha: "18 JUN 2026", sede: "Mercedes-Benz Stadium", ciudad: "Atlanta", pais: "usa", fase: "grupo A", precio: 1700, imagen: "/src/mercedes.jpg", categoria: "general", destacado: "GRUPO A" },
     { id: 26, local: "Suiza", visitante: "Bosnia-Herzegovina", fecha: "18 JUN 2026", sede: "SoFi Stadium", ciudad: "Inglewood", pais: "usa", fase: "grupo B", precio: 2500, imagen: "/src/sofi.jpg", categoria: "general", destacado: "GRUPO B" },
@@ -65,7 +65,7 @@ export const matches = [
     { id: 50, local: "Marruecos", visitante: "Haití", fecha: "24 JUN 2026", sede: "Mercedes-Benz Stadium", ciudad: "Atlanta", pais: "usa", fase: "grupo C", precio: 1800, imagen: "/src/mercedes.jpg", categoria: "general", destacado: "GRUPO C" },
     { id: 51, local: "Suiza", visitante: "Canadá", fecha: "24 JUN 2026", sede: "BC Place Vancouver", ciudad: "Vancouver", pais: "canada", fase: "grupo B", precio: 2200, imagen: "/src/bc.jpg", categoria: "general", destacado: "GRUPO B" },
     { id: 52, local: "Bosnia-Herzegovina", visitante: "Catar", fecha: "24 JUN 2026", sede: "Lumen Field", ciudad: "Seattle", pais: "usa", fase: "grupo B", precio: 1950, imagen: "/src/lumen.jpg", categoria: "general", destacado: "GRUPO B" },
-    { id: 53, local: "República Checa", visitante: "México", fecha: "24 JUN 2026", sede: "Estadio Azteca", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo A", precio: 2500, imagen: "/src/azteca.jpg", categoria: "general", destacado: "GRUPO A" },
+    { id: 53, local: "República Checa", visitante: "México", fecha: "24 JUN 2026", sede: "Estadio Banorte", ciudad: "Ciudad de México", pais: "mexico", fase: "grupo A", precio: 2500, imagen: "/src/banorte.jpg.jpeg", categoria: "general", destacado: "GRUPO A" },
     { id: 54, local: "Sudáfrica", visitante: "Corea del Sur", fecha: "24 JUN 2026", sede: "BBVA", ciudad: "Guadalupe", pais: "mexico", fase: "grupo A", precio: 1700, imagen: "/src/bbva.jpg", categoria: "general", destacado: "GRUPO A" },
 
     { id: 55, local: "Curazao", visitante: "Costa de Marfil", fecha: "25 JUN 2026", sede: "Lincoln Financial Field", ciudad: "Filadelfia", pais: "usa", fase: "grupo E", precio: 2650, imagen: "/src/lincoln.jpg", categoria: "general", destacado: "GRUPO E" },
@@ -120,12 +120,12 @@ export const stadiumSections = {
 
 // Datos de sedes
 export const venues = [
-    { name: "CDMX", flag: "mx", city: "CDMX" },
-    { name: "GDL", flag: "mx", city: "GDL" },
-    { name: "MTY", flag: "mx", city: "MTY" },
-    { name: "NY/NJ", flag: "us", city: "NY/NJ" },
-    { name: "LA", flag: "us", city: "LA" },
-    { name: "DALLAS", flag: "us", city: "DALLAS" },
-    { name: "TORONTO", flag: "ca", city: "TORONTO" },
-    { name: "VANCOUVER", flag: "ca", city: "VANCOUVER" }
+    { name: "CDMX", flag: "mx", city: "Ciudad de México", imagen: "/src/city-cdmx.png" },
+    { name: "GDL", flag: "mx", city: "Guadalajara", imagen: "/src/city-gdl.png" },
+    { name: "MTY", flag: "mx", city: "Monterrey", imagen: "/src/city-mty.png" },
+    { name: "NY/NJ", flag: "us", city: "Nueva York", imagen: "/src/city-nynj.png" },
+    { name: "LA", flag: "us", city: "Los Ángeles", imagen: "/src/city-la.png" },
+    { name: "DALLAS", flag: "us", city: "Dallas", imagen: "/src/city-dallas.png" },
+    { name: "TORONTO", flag: "ca", city: "Toronto", imagen: "/src/city-toronto.png" },
+    { name: "VANCOUVER", flag: "ca", city: "Vancouver", imagen: "/src/city-vancouver.png" }
 ];

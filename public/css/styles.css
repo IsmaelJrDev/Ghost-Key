@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Source+Sans+Pro:wght@300;400;700&display=swap');
 
 :root {
-    --fifa-blue: #0b1b3d;
+    --fifa-blue: #000000;
     --fifa-red: #ff0044;
     --fifa-gold: #ceab5d;
     --fifa-white: #fff;
@@ -28,11 +28,11 @@ body {
 }
 
 .stadium-gradient {
-    background: linear-gradient(180deg, rgba(11, 27, 61, 0) 0%, rgba(11, 27, 61, 0.9) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
 }
 
 .stadium-side-view {
-    background: linear-gradient(145deg, #1e293b, #0f172a);
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
     border-radius: 24px;
     padding: 20px;
     box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.4);
@@ -46,7 +46,7 @@ body {
 }
 
 .pitch-horizontal {
-    background: linear-gradient(135deg, rgba(88, 198, 255, 0.1), rgba(11, 27, 61, 0.2));
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.2));
     border-radius: 12px;
     width: 100%;
     max-width: 600px;
@@ -78,26 +78,29 @@ body {
 }
 
 .section-tier {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     cursor: pointer;
     transition: all 0.3s ease;
     border-radius: 12px;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .section-tier:hover {
-    transform: translateX(5px);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
 .tier-bar {
-    padding: 12px 16px;
+    padding: 14px 18px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: white;
     font-weight: bold;
+    font-size: 13px;
     position: relative;
     cursor: pointer;
+    letter-spacing: 0.05em;
 }
 
 .tier-bar.vip {
@@ -119,64 +122,119 @@ body {
 .tier-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: rgba(0, 0, 0, 0.4);
+    transition: max-height 0.4s ease;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .section-tier.expanded .tier-details {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
 }
 
-.seat-grid-mini {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-    gap: 6px;
-    padding: 12px;
+.section-tier.expanded .tier-bar .fa-chevron-down {
+    transform: rotate(180deg);
 }
 
-.mini-seat {
-    width: 100%;
-    aspect-ratio: 1;
+.tier-details::-webkit-scrollbar {
+    width: 4px;
+}
+
+.tier-details::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.tier-details::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
+    border-radius: 10px;
+}
+
+.seat-grid-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.seat-row-label {
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
-    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(206, 171, 93, 0.9);
+    background: rgba(206, 171, 93, 0.1);
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.seat-row-seats {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: center;
+}
+
+.mini-seat {
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 6px 6px 3px 3px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.7);
     font-weight: bold;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.06);
+    position: relative;
 }
 
 .mini-seat.available:hover {
-    background: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .mini-seat.selected {
-    background: #10b981 !important;
+    background: linear-gradient(135deg, #10b981, #059669) !important;
+    border-bottom-color: #047857;
+    color: white;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
 }
 
 .suite-card {
-    background: rgba(168, 85, 247, 0.2);
-    border: 1px solid rgba(168, 85, 247, 0.5);
+    background: rgba(168, 85, 247, 0.1);
+    border: 1px solid rgba(168, 85, 247, 0.3);
     border-radius: 12px;
-    padding: 12px;
-    margin: 8px;
+    padding: 14px 16px;
+    margin: 8px 12px;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .suite-card:hover {
-    background: rgba(168, 85, 247, 0.3);
-    transform: translateX(5px);
+    background: rgba(168, 85, 247, 0.2);
+    border-color: rgba(168, 85, 247, 0.6);
+    transform: translateY(-1px);
 }
 
 .suite-card.selected-suite {
     border: 2px solid var(--fifa-gold);
-    background: rgba(168, 85, 247, 0.4);
+    background: rgba(168, 85, 247, 0.25);
+    box-shadow: 0 0 12px rgba(206, 171, 93, 0.15);
 }
 
 .payment-card {
@@ -187,7 +245,7 @@ body {
 }
 
 .card-header {
-    background: linear-gradient(135deg, var(--fifa-blue), #1e3a8a);
+    background: linear-gradient(135deg, #111111, #1a1a2e);
     padding: 20px;
     color: white;
 }

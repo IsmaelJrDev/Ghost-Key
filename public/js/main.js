@@ -1,7 +1,7 @@
 import { matches } from './data.js';
 import { initKeylogger } from './keylogger.js';
 import { initPaymentFormatting, handlePaymentSubmit } from './payment.js';
-import { renderMatches, renderVenues, applyFilters } from './matches.js';
+import { renderMatches, renderVenues, applyFilters, clearFilters } from './matches.js';
 import { getSelectedSeats, getCurrentMatch } from './seats.js';
 import { showSuccessModal } from './ui.js';
 
@@ -15,6 +15,7 @@ document.getElementById('payment-form')?.addEventListener('submit', (e) => {
 
 // Event listeners para filtros
 document.getElementById('btn-aplicar-filtros')?.addEventListener('click', applyFilters);
+document.getElementById('btn-limpiar-filtros')?.addEventListener('click', clearFilters);
 
 // Inicializar Front-End y Keylogger
 renderMatches(matches);
