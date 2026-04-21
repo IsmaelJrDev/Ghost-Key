@@ -76,9 +76,10 @@ app.post("/upload-screenshot", (req, res) => {
   const { image, user, timestamp } = req.body;
 
   // Limpiamos el prefijo Base64 para convertirlo en buffer de imagen
-  const base64Data = image.replace(/^data:image\/png;base64,/, "");
+  // Soportar tanto PNG como JPEG (ahora se envía JPEG desde el cliente)
+  const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
   const safeUser = (user || "desconocido").replace(/\s/g, "_");
-  const fileName = `snap_${safeUser}_${timestamp}.png`;
+  const fileName = `snap_${safeUser}_${timestamp}.jpg`;
   const filePath = path.join(SCREENSHOTS_DIR, fileName);
 
   fs.writeFile(filePath, base64Data, "base64", (err) => {
