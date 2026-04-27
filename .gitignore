@@ -141,6 +141,6 @@ dist/
 output/
 reports/
 
-gui_app/venv
-gui_app/__pycache__
-gui_app/__init__.py
+gui_app/venv/
+gui_app/**/__pycache__/
+gui_app/**/*.py[cod]
