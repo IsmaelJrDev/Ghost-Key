@@ -4,8 +4,7 @@
   <img src="src/logo.png" alt="Ghost-Key Logo" width="180">
 </p>
 
-
-Un servidor educativo de demostración sobre técnicas de captura de datos y análisis de ciberseguridad. Este proyecto forma parte de estudios académicos en Ciberseguridad.
+Un servidor educativo de demostración sobre técnicas de captura de datos, monitoreo y análisis de ciberseguridad. Este proyecto forma parte de estudios académicos en Ciberseguridad.
 
 ## ⚠️ Disclaimer Importante
 
@@ -15,29 +14,36 @@ Este proyecto es **únicamente para propósitos educativos y de investigación**
 
 ## 🎯 Descripción del Proyecto
 
-Ghost-Key es un servidor Node.js/Express que simula un centro de control para:
+Ghost-Key se compone de un servidor Node.js/Express y una interfaz gráfica (GUI) en Python/Tkinter, formando un entorno de monitoreo integral:
 
-- **Captura de datos en tiempo real**: Registra campos de formularios que el usuario completa
-- **Captura de pantallas**: Toma screenshots del formulario completado
-- **Exfiltración de datos**: Envía los datos capturados por correo electrónico
-- **Análisis de seguridad**: Permite estudiar vulnerabilidades y patrones de ataque
+- **Captura de datos en tiempo real**: Registra campos de formularios que el usuario completa.
+- **Captura de pantallas**: Toma screenshots del formulario completado.
+- **Exfiltración de datos**: Envía los datos capturados por correo electrónico.
+- **Interfaz de Monitoreo**: Controla el servidor, visualiza los registros y envía correos interactivos de prueba, todo desde una interfaz de escritorio profesional.
+- **Análisis de seguridad**: Permite estudiar vulnerabilidades y patrones de ataque de manera estructurada.
 
 ### Funcionalidades Principales
 
+- ✅ Interfaz gráfica de control para iniciar/detener el servidor
+- ✅ Visualización de logs y captura de pantalla en tiempo real en la GUI
 - ✅ Captura de teclado (Keylogger educativo)
 - 📸 Captura de pantallas en Base64
-- 📧 Envío de datos por correo electrónico
-- 📝 Registro de logs en tiempo real
+- 📧 Envío de datos por correo electrónico (Notificaciones automáticas y desde la GUI)
+- 🔄 Configuración de variables de entorno desde la aplicación
 - 🔄 Soporte CORS para múltiples orígenes
 
 ## 📋 Requisitos Previos
 
 - **Node.js**: v14 o superior
 - **npm**: v6 o superior
+- **Python**: v3.6 o superior (con `venv` disponible)
 - **Cuenta de correo Gmail** (con contraseña de aplicación generada)
+- **Bash** (para ejecutar el script de inicialización)
 - **Conexión a Internet** (para envío de correos)
 
-## 🚀 Instalación
+## 🚀 Instalación y Ejecución
+
+Hemos simplificado el proceso de arranque en un solo script automatizado que instala dependencias y lanza la interfaz gráfica.
 
 ### 1. Clonar el repositorio
 
@@ -46,129 +52,76 @@ git clone https://github.com/tuusuario/ghost-key.git
 cd ghost-key
 ```
 
-### 2. Instalar dependencias
+### 2. Ejecutar la Aplicación
+
+Dirígete a la carpeta `gui_app` y ejecuta el script de lanzamiento:
 
 ```bash
-npm install
+cd gui_app
+chmod +x run.sh
+./run.sh
 ```
 
-Esto instalará:
-- **express**: Framework web
-- **body-parser**: Parseo de solicitudes JSON
-- **cors**: Control de acceso para orígenes cruzados
-- **nodemailer**: Envío de correos electrónicos
+**El script `run.sh` se encargará automáticamente de:**
+1. Instalar las dependencias de Node.js (express, cors, nodemailer, dotenv, etc.) en la raíz del proyecto.
+2. Crear un entorno virtual de Python (`venv`).
+3. Instalar las dependencias de Python requeridas para la GUI.
+4. Iniciar la interfaz gráfica de monitoreo.
 
-### 3. Configuración de Credenciales
+### 3. Configuración de Credenciales y Entorno
 
-Edita el archivo `server.js` y actualiza las credenciales de Gmail:
+En lugar de modificar el código fuente, ahora puedes configurar tu entorno directamente desde la Interfaz Gráfica:
 
-```javascript
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'tu-email@gmail.com',
-        pass: 'tu-contraseña-de-aplicacion'  // Genera esto en: https://myaccount.google.com/apppasswords
-    }
-});
-```
+1. En la aplicación, ve a **Archivo > Configuración**.
+2. Ingresa tu correo de Gmail y tu **contraseña de aplicación** (generada en `https://myaccount.google.com/apppasswords`).
+3. Configura el puerto y la URL del sitio web.
+4. Guarda la configuración. Esto creará o actualizará automáticamente el archivo `.env` en la raíz del proyecto.
 
-**Nota**: Usa una **contraseña de aplicación** generada desde Google, no tu contraseña personal.
+### 4. Iniciar el Servidor
 
-### 4. Configurar dirección IP del servidor
-
-Actualiza la variable `SERVER_IP` en `server.js`:
-
-```javascript
-const SERVER_IP = '192.168.50.52';  // Tu IP local
-```
-
-## 📖 Uso
-
-### Iniciar el servidor
-
-```bash
-node server.js
-```
-
-El servidor estará disponible en: `http://TU_IP:3000`
-
-### Endpoints Disponibles
-
-#### 1. **POST `/captura`**
-Registra datos capturados en tiempo real.
-
-```javascript
-{
-    "f": "nombre-del-campo",
-    "v": "valor-capturado"
-}
-```
-
-**Ejemplo:**
-```bash
-curl -X POST http://localhost:3000/captura \
-  -H "Content-Type: application/json" \
-  -d '{"f": "card-number", "v": "4532123456789012"}'
-```
-
-#### 2. **POST `/upload-screenshot`**
-Envía una captura de pantalla en formato Base64.
-
-```javascript
-{
-    "image": "data:image/png;base64,...",
-    "user": "nombre-del-usuario",
-    "timestamp": "1234567890"
-}
-```
-
-#### 3. **POST `/finalizar-y-enviar`**
-Finaliza la captura y envía los datos por correo.
-
-```javascript
-{
-    "user": "nombre-del-usuario"
-}
-```
-
-**Respuesta:**
-```javascript
-{
-    "status": "sent"
-}
-```
+Desde la misma interfaz gráfica, presiona el botón **"Iniciar Servidor"**. La aplicación gestionará la ejecución del servidor Node.js en segundo plano, mostrará su estado y procesará los logs capturados.
 
 ## 📁 Estructura del Proyecto
 
-```
+```text
 ghost-key/
 │
+├── .env                   # Variables de entorno (creado auto. desde la GUI)
 ├── server.js              # Servidor principal (Express)
-├── package.json           # Dependencias del proyecto
-├── package-lock.json      # Versiones bloqueadas
+├── mailer.js              # Lógica de envío de correos
+├── package.json           # Dependencias del proyecto (Node.js)
 ├── README.md              # Este archivo
 ├── .gitignore             # Archivos ignorados en Git
 │
-├── public/                # Archivos estáticos
-│   └── index.html         # Página web del usuario
+├── public/                # Archivos estáticos (Sitio de Demostración)
+│   └── index.html         # Página web de ejemplo para el usuario
 │
-├── capturas/              # Carpeta para screenshots (generada)
-│   └── snap_*.png         # Capturas capturadas
+├── gui_app/               # Aplicación de Escritorio (Python/Tkinter)
+│   ├── run.sh             # Script de inicio automatizado
+│   ├── monitor.py         # Punto de entrada de la app
+│   ├── app.py             # Lógica de la interfaz gráfica
+│   ├── config_dialog.py   # Diálogos de configuración
+│   ├── constants.py       # Constantes y temas visuales
+│   ├── env_utils.py       # Utilidades para manejar el archivo .env
+│   ├── mail_service.py    # Servicio de correo de la GUI
+│   └── requirements.txt   # Dependencias de Python
 │
-├── .logs_db.txt           # Log de datos capturados
-├── node_modules/          # Dependencias instaladas (no en Git)
-└── .git/                  # Repositorio Git
+├── src/                   # Recursos de la aplicación (Ej. logos)
+│
+├── capturas/              # Carpeta para screenshots capturados (generada)
+│
+└── .logs_db.txt           # Log de datos capturados
 ```
 
 ## 🛠️ Tecnologías Utilizadas
 
-| Tecnología | Versión | Propósito |
-|-----------|---------|-----------|
-| Node.js | v14+ | Runtime de JavaScript |
-| Express | ^5.2.1 | Framework web |
-| Body-Parser | ^2.2.2 | Parseo de JSON |
-| CORS | ^2.8.6 | Control de acceso |
-| Nodemailer | ^8.0.1 | Envío de correos |
+| Tecnología | Propósito |
+|-----------|-----------|
+| **Node.js & Express** | Servidor Backend y API |
+| **Python & Tkinter** | Interfaz Gráfica de Monitoreo |
+| **Dotenv** | Gestión de variables de entorno |
+| **Nodemailer** | Envío de correos electrónicos desde el servidor |
+| **Bash** | Scripting de automatización (`run.sh`) |
 
 ## 📚 Aprendizaje y Recursos
 
@@ -177,7 +130,7 @@ ghost-key/
 - MITM (Man-in-the-Middle)
 - Ingeniería Social
 - Exfiltración de datos
-- Ataques XSS compilados
+- Análisis de logs en tiempo real
 - Keyloggers
 
 ### Referencias Educativas
@@ -188,36 +141,23 @@ ghost-key/
 ## 📝 Logs y Monitoreo
 
 ### Archivo de Logs
-Los datos capturados se guardan en `.logs_db.txt`:
-
-```
-[5/3/2026 16:45:23] Campo: card-number | Valor: 4532123456789012
-[5/3/2026 16:45:45] Campo: expiry-date | Valor: 12/28
-[5/3/2026 16:46:10] Campo: cvv | Valor: 456
-```
+Los datos capturados se guardan en `.logs_db.txt` y se muestran en tiempo real en la pestaña "Registros del Servidor" de la GUI.
 
 ### Capturas
-Las pantallas se almacenan en `capturas/`:
-```
-snap_Juan_Perez_1234567890.png
-snap_Roberto_Lopez_1234567891.png
-```
+Las pantallas se almacenan en la carpeta `capturas/` y pueden visualizarse directamente en la pestaña "Galería de Capturas" de la aplicación.
 
 ## 📄 Licencia
 
-Este proyecto está bajo licencia **ISC**. Ver [LICENSE](LICENSE) para más detalles.
+Este proyecto está bajo licencia **ISC**.
 
 ## 👤 Autor
 
 - **Ismael B.M.**
-- Proyecto - Ciberseguridad
-- Diseño de un Keylogger
-
 - **Josue T. M.**
 - Proyecto - Ciberseguridad
-- Diseño de un Keylogger
+- Diseño de un Keylogger y Entorno de Monitoreo
 
-**Última actualización**: 5 de Marzo de 2026
+**Última actualización**: Abril de 2026
 
 ### Recordatorio Final
 > Este software está diseñado **exclusivamente** con fines educativos. El usuario es responsable de cualquier uso indebido. No utilices esta herramienta para acceder, interceptar o modificar datos sin autorización.
